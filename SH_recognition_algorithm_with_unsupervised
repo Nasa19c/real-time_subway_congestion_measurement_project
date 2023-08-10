@@ -1,0 +1,39 @@
+import cv2
+import matplotlib.pyplot as plt
+import numpy as np
+
+print('타임랩스 생성 시작')
+
+cap = cv2.VideoCapture('barshaba2_sample.mp4')
+width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+
+hog = cv2.HOGDescriptor() #객체
+hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector()) 
+hogParams = {'winStride': (3,3), 'padding': (12,12), 'scale': 1.05, 'hitThreshold': 0} 
+
+movie_name = 'airport_frame_check'
+fourcc = cv2.VideoWriter_fourcc(*'XVID') 
+video = cv2.VideoWriter(movie_name, fourcc, 5, (width, height))
+
+
+framer_list = []
+num = 0
+while (cap.isOpened()):
+    ret, frame = cap.read()
+    if ret:
+        if (num%3==0):
+#             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+#             human, r = hog.detectMultiScale(gray, **hogParams)
+            framer_list.append(frame)
+#             if (len(human) > 0):
+#                 for (x, y, w, h) in human:
+#                     cv2.rectangle(frame, (x,y), (x+w, y+h), (255,255,255), 3)
+#             video.write(frame)
+
+
+    else: break
+    num += 1
+    
+
+print(len(framer_list))
