@@ -37,3 +37,37 @@ while (cap.isOpened()):
     
 
 print(len(framer_list))
+
+
+# 사람이 있는부분만 추출
+framer_list = [frame[:, :450, :] for frame in framer_list]
+crowd_metrics = np.array(framer_list)
+crowd_metrics.shape
+framer_list_gray=[]
+for frame in framer_list:
+    framer_list_gray.append(cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY))
+crowd_metrics_gray = np.array(framer_list_gray)
+met = crowd_metrics_gray.shape
+crowd_2d = crowd_metrics_gray.reshape(-1,met[1]*met[2])
+
+
+# 모델 학습
+from sklearn.decomposition import PCA
+
+pca = PCA(n_components=100)
+pca.fit(crowd_2d)
+crowd_pca = pca.transform(crowd_2d)
+plt.plot(pca.explained_variance_ratio_)
+plt.show
+
+from sklearn.cluster import KMeans
+
+km = KMeans(n_clusters=3)
+km.fit(crowd_pca)
+print(np.unique(km.labels_, return_counts=True))
+
+# 모델 실행
+for frame in crowd_metrics[km.labels_==2]:
+    plt.imshow(frame)
+    plt.axis('off')
+    plt.show()
