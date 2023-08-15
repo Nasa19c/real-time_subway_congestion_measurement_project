@@ -274,7 +274,7 @@ figure {
   font-weight: bold;
 }
 .sf-menu a:hover, .sf-menu a:focus {
-  color: #0047ab !important;
+  color: #F78536 !important;
 }
 
 .sf-menu li.active a:hover, .sf-menu li.active a:focus {
@@ -556,7 +556,7 @@ figure {
 }
 /* station last, next 칸 배경*/
 .tabulation input[type="text"] {
-  background: rgba(255, 255, 255, 1);
+  background: rgba(0, 0, 0, 0.05);
   border: none;
   box-shadow: none;
   font-weight: bold;
