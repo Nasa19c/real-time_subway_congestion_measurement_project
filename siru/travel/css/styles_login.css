@@ -10928,6 +10928,8 @@ body {
 }
 .sb-nav-fixed #layoutSidenav #layoutSidenav_nav .sb-sidenav .sb-sidenav-menu {
   overflow-y: auto;
+  margin-top:50px;
+  /* sidebar menu margin-top*/
 }
 .sb-nav-fixed #layoutSidenav #layoutSidenav_content {
   padding-left: 225px;
