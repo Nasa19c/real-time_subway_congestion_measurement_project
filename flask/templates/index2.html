@@ -102,7 +102,7 @@
 											<div class="col-xxs-12 col-xs-6 mt alternate">
 												<div class="input-field">
 													<label for="from">Last Station:</label>
-													<input type="text" class="form-control" id="to-place" placeholder="Last"/>
+													<span type="text" class="form-control" id="to-place">{{last_station}}</span>
 												</div>
 											</div>
 											<div class="col-xxs-12 col-xs-6 mt alternate">
@@ -353,8 +353,13 @@
 							</div>
 							
 							<div class="tabulation2 animate-box" id="map" style="width:60%; height:543px">
+								<div class="animation-box" style="position: relative; overflow: hidden;">
+									<video autoplay loop muted style="width: 100%; height: 100%;">
+										<source src="{{ url_for('static', filename='video1.mp4') }}" type="video/mp4">
+									</video>
+								</div>
 							</div>
-							<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey='key를 입력해야'"></script>
+							<!--<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey='key를 입력해야'"></script>
 							<script>
     							var mapContainer = document.getElementById('map');
     							var mapOption = {
@@ -362,7 +367,7 @@
         							level: 3 // 지도의 확대 레벨
     							};
     							var map = new kakao.maps.Map(mapContainer, mapOption);
-							</script>
+							</script>-->
 						</div>
 					</div>
 				</div>

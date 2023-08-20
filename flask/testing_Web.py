@@ -27,13 +27,15 @@ def login():
 
 @app.route("/index2")
 def index2():
-    return render_template('index2.html')
+    return render_template('index2.html', last_station = 'asd')
+
+
 
 @app.route("/data")
 def data():
     return render_template('data.html')
 
 if __name__=="__main__":
-    app.run()
+    app.run(debug=True)
 
 # 지도는 request로 불러와야함
