@@ -1,3 +1,5 @@
+import random
+
 from flask import Flask, redirect, render_template, request, session
 
 app = Flask(__name__)
@@ -6,6 +8,10 @@ app.secret_key = 'supersecretkey'
 users = {
     'bean': '1234'
 }
+
+종각역 = {'last':'', 'next': '시청역'}
+시청역 = {'last':'종각역', 'next': '서울역'}
+서울역 = {'last':'시청역', 'next': ''}
 
 @app.route("/")
 def index():
@@ -27,7 +33,8 @@ def login():
 
 @app.route("/index2")
 def index2():
-    return render_template('index2.html', last_station = 'asd')
+    progress_value = random.randrange(0,100)
+    return render_template('index2.html', last_station = 시청역['last'], next_station = 시청역['next'], progress_value = progress_value)
 
 
 

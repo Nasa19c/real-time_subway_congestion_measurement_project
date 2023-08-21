@@ -37,6 +37,8 @@
 	<link rel="stylesheet" href="static/css/cs-skin-border.css">
 	
 	<link rel="stylesheet" href="static/css/style.css">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
 
 
 	<!-- Modernizr JS -->
@@ -108,26 +110,20 @@
 											<div class="col-xxs-12 col-xs-6 mt alternate">
 												<div class="input-field">
 													<label for="date-start">Next Station:</label>
-													<input type="text" class="form-control" id="date-start" placeholder="Next"/>
+													<span type="text" class="form-control" id="to-place">{{next_station}}</span>
 												</div>
 											</div>
 											<div class="col-sm-12 mt">
 												<section>
 													<label for="class">Congestion:</label>
-													<div id="searchResults" class="result-box"></div>
+													<div class="progress-bar">
+														<div class="progress" style = "width: 6%;">
+															{{ progress_value }}%
+														</div>
+													</div>
 												</section>
 											</div>
-											<style>
-												.result-box {
-													padding: 10px;
-													margin-top: 10px;
-													width: 100%;
-													height: 30px;
-													background: linear-gradient(to right, blue,skyblue, green,greenyellow, yellow, orange, red);
-													border-radius: 5px;
-													color: white;
-												}
-											</style>
+								
 
 
 											
@@ -195,38 +191,27 @@
 											</div>
 											<div class="col-xxs-12 col-xs-6 mt alternate">
 												<div class="input-field">
-													<label for="date-start">Last Station:</label>
-													<input type="text" class="form-control" id="date-start" placeholder="Last"/>
+													<label for="from">Last Station:</label>
+													<span type="text" class="form-control" id="to-place">{{last_station}}</span>
 												</div>
-												<!--<div id="outputArea"></div>-->
 											</div>
 											<div class="col-xxs-12 col-xs-6 mt alternate">
 												<div class="input-field">
-													<label for="date-end">Next Station:</label>
-													<input type="text" class="form-control" id="date-end" placeholder="Next"/>
+													<label for="date-start">Next Station:</label>
+													<span type="text" class="form-control" id="to-place">{{next_station}}</span>
 												</div>
 												<!--<div id="outputArea"></div>-->
 											</div>
 											<div class="col-sm-12 mt">
 												<section>
 													<label for="class">Congestion:</label>
-													<div id="searchResults" class="result-box"></div>
+													<div class="progress-bar">
+														<div class="progress" style = "width: {{ progress_value }}%;">
+															{{ progress_value }}%
+														</div>
+													</div>
 												</section>
-												
-												
 											</div>
-
-											<style>
-												.result-box {
-													padding: 10px;
-													margin-top: 10px;
-													width: 100%;
-													height: 30px;
-													background: linear-gradient(to right, blue,skyblue, green,greenyellow, yellow, orange, red);
-        											border-radius: 5px;
-        											color: white;
-												}
-											</style>
 
 											<div class="col-xxs-12 col-xs-6 mt">
 												<section>
@@ -281,7 +266,7 @@
 										</div>
 									</div>
 
-									<div role="tabpanel" class="tab-pane" id="packages">
+									<!--<div role="tabpanel" class="tab-pane" id="packages">
 									<div class="row">
 											<div class="col-xxs-12 col-xs-6 mt">
 												<div class="input-field">
@@ -346,7 +331,7 @@
 												<input type="submit" class="btn btn-primary btn-block" value="Search Packages">
 											</div>
 										</div>
-									</div>
+									</div>-->
 									</div>
 
 								</div>
