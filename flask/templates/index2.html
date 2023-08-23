@@ -94,11 +94,11 @@
 								   <!-- Tab panes -->
 									<div class="tab-content">
 									 <div role="tabpanel" class="tab-pane active" id="flights">
-										<div class="row">
+										<form class="row" action = "/index2" method="post">
 											<div class="col-xxs-12 col-xs-12 mt">
 												<div class="input-field">
 													<label for="from">Station:</label>
-													<input type="text" class="form-control" id="from-place" placeholder="Station"/>
+													<input type="text" name = "Station" class="form-control" id="from-place" placeholder="Station"/>
 												</div>
 											</div>
 											<div class="col-xxs-12 col-xs-6 mt alternate">
@@ -117,8 +117,8 @@
 												<section>
 													<label for="class">Congestion:</label>
 													<div class="progress-bar">
-														<div class="progress" style = "width: 6%;">
-															{{ progress_value }}%
+														<div class="progress" style = "width: {{ progress_value_inside }}%;">
+															{{ progress_value_inside }}%
 														</div>
 													</div>
 												</section>
@@ -132,9 +132,9 @@
 												<section>
 													<label for="class">Arrive:</label>
 													<select class="cs-select cs-skin-border">
-														<option value="" disabled selected>18:40</option>
-														<option value="1">18:40</option>
-														<option value="2">18:46</option>
+														<option value="" disabled selected>{{arrive1}}</option>
+														<option value="1">{{arrive1}}</option>
+														<option value="2">{{arrive2}}</option>
 														<!--<option value="3">3</option>
 														<option value="4">4</option>-->
 													</select>
@@ -176,17 +176,17 @@
 												</section>
 											</div>-->
 											<div class="col-xs-12">
-												<input type="submit" class="btn btn-primary btn-block" value="Search Station">
+												<input type="submit" class="btn btn-primary btn-block" value = "Search Station">
 											</div>
-										</div>
+										</form>
 									 </div>
 
 									 <div role="tabpanel" class="tab-pane" id="hotels">
-									 	<div class="row">
+									 	<form class="row" action = "/index2" method="post">
 											<div class="col-xxs-12 col-xs-12 mt">
 												<div class="input-field">
 													<label for="from">Station:</label>
-													<input type="text" class="form-control" id="from-place" placeholder="Station"/>
+													<input type="text" name = "Station" class="form-control" id="from-place" placeholder="Station"/>
 												</div>
 											</div>
 											<div class="col-xxs-12 col-xs-6 mt alternate">
@@ -206,35 +206,24 @@
 												<section>
 													<label for="class">Congestion:</label>
 													<div class="progress-bar">
-														<div class="progress" style = "width: {{ progress_value }}%;">
-															{{ progress_value }}%
+														<div class="progress" style="width: {{ progress_value_platform }}%;">
+															{{ progress_value_platform }}%
 														</div>
 													</div>
 												</section>
 											</div>
+											
 
 											<div class="col-xxs-12 col-xs-6 mt">
 												<section>
 													<label for="class">Arrive:</label>
-													<select class="cs-select cs-skin-border">
-														<option value="" disabled selected>18:40</option>
-														<!--<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>-->
-													</select>
+													<span type="text" class="form-control" id="to-place">{{arrive1}}</span>
 												</section>
 											</div>
 											<div class="col-xxs-12 col-xs-6 mt">
 												<section>
 													<label for="class">:</label>
-													<select class="cs-select cs-skin-border">
-														<option value="" disabled selected>18:46</option>
-														<!--<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>-->
-													</select>
+													<span type="text" class="form-control" id="to-place">{{arrive2}}</span>
 												</section>
 											</div>
 											<!--<div class="col-xxs-12 col-xs-6 mt">
@@ -261,9 +250,10 @@
 												</section>
 											</div>-->
 											<div class="col-xs-12">
-												<input type="submit" class="btn btn-primary btn-block" value="Search Station">
+												<button type="submit" class="btn btn-primary btn-block">Search Station</button>
 											</div>
-										</div>
+
+										</form>
 									</div>
 
 									<!--<div role="tabpanel" class="tab-pane" id="packages">

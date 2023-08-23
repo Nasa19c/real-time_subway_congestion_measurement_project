@@ -8,10 +8,11 @@ app.secret_key = 'supersecretkey'
 users = {
     'bean': '1234'
 }
-
-종각역 = {'last':'', 'next': '시청역'}
-시청역 = {'last':'종각역', 'next': '서울역'}
-서울역 = {'last':'시청역', 'next': ''}
+topics = [
+    {'id' : '종각역', 'last': '', 'next': '시청역', 'arrive1': '18:40', 'arrive2': '18:45'},
+    {'id' : '시청역','last':'종각역', 'next': '서울역', 'arrive1': '18:47', 'arrive2': '18:53'},
+    {'id' : '서울역','last':'시청역', 'next': '', 'arrive1': '18:54', 'arrive2': '18:59'}
+]
 
 @app.route("/")
 def index():
@@ -30,12 +31,25 @@ def login():
     else:
         return render_template('login.html')
 
-
-@app.route("/index2")
+@app.route("/index2", methods =['GET','POST'])
 def index2():
-    progress_value = random.randrange(0,100)
-    return render_template('index2.html', last_station = 시청역['last'], next_station = 시청역['next'], progress_value = progress_value)
+    progress_value_platform = random.randrange(0,100)
+    progress_value_inside = random.randrange(0,100)
+    if request.method =='POST':
+        for station_info in topics:
+            if request.form['Station'] == station_info['id']:
+                return render_template('index2.html', last_station = station_info['last'], next_station = station_info['next'], arrive1 = station_info['arrive1'], arrive2 = station_info['arrive2'],progress_value_platform = progress_value_platform, progress_value_inside = progress_value_inside)
+    else:
+        return render_template('index2.html',progress_value_platform = progress_value_platform, progress_value_inside = progress_value_inside)
 
+
+# @app.route("/index2/1/", methods=['GET','POST'])
+# def index2_1():
+#     progress_value_platform = random.randrange(0,100)
+#     progress_value_inside = random.randrange(0,100)
+#     for station_info in topics:
+#         if station_info['id'] == '종각역':
+#             return render_template('index2.html', last_station = station_info['last'], next_station = station_info['next'], arrive1 = station_info['arrive1'], arrive2 = station_info['arrive2'],progress_value_platform = progress_value_platform, progress_value_inside = progress_value_inside)
 
 
 @app.route("/data")
