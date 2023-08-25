@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Dashboard - SB Admin</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        <link href="static/css/styles_login.css" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	    <link rel="shortcut icon" href="favicon.ico">
+
+	    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+	
+	    <!-- Animate.css -->
+	    <link rel="stylesheet" href="static/css/animate.css">
+	    <!-- Icomoon Icon Fonts-->
+	    <link rel="stylesheet" href="static/css/icomoon.css">
+	    <!-- Bootstrap  -->
+	    <link rel="stylesheet" href="static/css/bootstrap.css">
+	    <!-- Superfish -->
+	    <link rel="stylesheet" href="static/css/superfish.css">
+	    <!-- Magnific Popup -->
+	    <link rel="stylesheet" href="static/css/magnific-popup.css">
+	    <!-- Date Picker -->
+	    <link rel="stylesheet" href="static/css/bootstrap-datepicker.min.css">
+	    <!-- CS Select -->
+	    <link rel="stylesheet" href="static/css/cs-select.css">
+	    <link rel="stylesheet" href="static/css/cs-skin-border.css">
+	
+	    <link rel="stylesheet" href="static/css/style.css">
+
+
+	    <!-- Modernizr JS -->
+	    <script src="static/js/modernizr-2.6.2.min.js"></script>
+	    <!-- FOR IE9 below -->
+	    <!--[if lt IE 9]>
+	    <script src="js/respond.min.js"></script>
+	    <![endif]-->
+    </head>
+    <body class="sb-nav-fixed">
+
+        <div id="fh5co-wrapper">
+        <div id="fh5co-page">
+
+        <header id="fh5co-header-section" class="sticky-banner">
+            <div class="container">
+				<div class="nav-header">
+					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
+					<h1 id="fh5co-logo"><a href="/index2"></i>Bean</a></h1>
+					<!-- START #fh5co-menu-wrap -->
+					<nav id="fh5co-menu-wrap" role="navigation">
+						<ul class="sf-menu" id="fh5co-primary-menu">
+							<li class="active"><a href="/index2">Home</a></li>
+							<li><a href="/">Logout</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Core</div>
+                            <a class="nav-link" href="/data">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Dashboard
+                            </a>
+                            <div class="sb-sidenav-menu-heading">Interface</div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Layouts
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                                    <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Pages
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        Authentication
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="login.html">Login</a>
+                                            <a class="nav-link" href="register.html">Register</a>
+                                            <a class="nav-link" href="password.html">Forgot Password</a>
+                                        </nav>
+                                    </div>
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                        Error
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="401.html">401 Page</a>
+                                            <a class="nav-link" href="404.html">404 Page</a>
+                                            <a class="nav-link" href="500.html">500 Page</a>
+                                        </nav>
+                                    </div>
+                                </nav>
+                            </div>
+                            <div class="sb-sidenav-menu-heading">Addons</div>
+                            <a class="nav-link" href="charts.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Charts
+                            </a>
+                            <a class="nav-link" href="tables.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Tables
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        Start Bootstrap
+                    </div>
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">Dashboard
+                            <!--검색기능 추가함-->
+                            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                                <div class="input-group">
+                                    <input id="searchInput" class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" /> 
+                                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                                </div>
+                            </form>
+                        </h1>
+                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+                        <script>
+                            $(document).ready(function () {
+                                // 검색 버튼이 클릭되었을 때
+                                $('#btnNavbarSearch').click(function () {
+                                    // 사용자의 검색어 가져오기
+                                    var searchValue = $('#searchInput').val();
+                            
+                                    // 검색어가 '시청', '종각', '서울' 중 하나인 경우에만 리디렉션 처리
+                                    if (searchValue === '시청' || searchValue === '종각' || searchValue === '서울') {
+                                        window.location.href = '/' + searchValue.toLowerCase() + '_station_daily_data';
+                                    } else {
+                                        // 검색어가 '시청', '종각', '서울' 중 하나가 아닌 경우 기본 동작 처리
+                                        window.location.href = '/data';
+                                    }
+                                });
+                            
+                                // 기본 그래프 아이콘 설정
+                                var defaultGraphIcons = '<i class="fas fa-chart-area me-1"></i><i class="fas fa-chart-bar me-1"></i>';
+                            
+                                // 기본 그래프 아이콘 표시
+                                $('#graphIcons').html(defaultGraphIcons);
+                            
+                                // 검색어에 따라 그래프 아이콘 업데이트
+                                $('#searchInput').on('input', function () {
+                                    var searchValue = $(this).val();
+                                    var graphIcons = defaultGraphIcons;
+                            
+                                    if (searchValue === '시청') {
+                                        graphIcons = '<i class="fas fa-chart-area me-1"></i><i class="fas fa-chart-bar me-1"></i>';
+                                    } else if (searchValue === '종각' || searchValue === '서울') {
+                                        graphIcons = '<i class="fas fa-chart-bar me-1"></i>';
+                                    }
+                            
+                                    $('#graphIcons').html(graphIcons);
+                                });
+                            });
+                        </script>
+
+                            
+                        
+
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-primary text-white mb-4">
+                                    <div class="card-body">Primary Card</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-warning text-white mb-4">
+                                    <div class="card-body">Warning Card</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-success text-white mb-4">
+                                    <div class="card-body">Success Card</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-danger text-white mb-4">
+                                    <div class="card-body">Danger Card</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-area me-1"></i>
+                                        시청역의 일별 승차총승객수
+                                    </div>
+                                    <div class="card-body" style="width: 100%; height: 250px; overflow: auto;">
+                                        <img src="{{ url_for('static', filename='si_station_chart.png') }}" alt="시청의 일별 승차총승객수">
+                                    </div>
+                                </div>
+                            </div>                        
+                            <!--<div class="col-xl-6">
+                                <div class="card mb-4">
+                                    <a class="nav-link" href="/station_daily_data">
+                                        <div class="card-header">
+                                            <i class="fas fa-chart-area me-1"></i>
+                                            {{ search_value }}역의 일별 승차총승객수
+                                        </div>
+                                        <div class="card-body" style="width: 100%; height: 250px; overflow: auto;">
+                                            {% if graph_image %}
+                                                <img src="{{ url_for('static', filename=graph_image) }}" alt="{{ search_value }}역의 일별 승차총승객수">
+                                            {% else %}
+                                                <p>그래프 이미지를 찾을 수 없습니다.</p>
+                                            {% endif %}
+                                        </div>
+                                    </a>   
+                                </div>
+                            </div>-->
+                            
+                            <!-- Load Chart.js library -->
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+                                                        
+                            <div class="col-xl-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-bar me-1"></i>
+                                        시청역의 요일별 승차총승객수
+                                    </div>
+                                    <div class="card-body" style="width: 100%; height: 250px; overflow: auto;">
+                                        <img src="{{ url_for('static', filename='si_station_weekday_chart.png') }}" alt="시청의 요일별 승차총승객수">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="col-xl-6">
+                                <div class="card mb-4">
+                                    <a class="nav-link" href="/station_daily_data">
+                                        <div class="card-header">
+                                            <i class="fas fa-chart-bar me-1"></i>
+                                            {{ search_value }}역의 요일별 승차총승객수
+                                        </div>
+                                        <div class="card-body" style="width: 100%; height: 250px; overflow: auto;">
+                                            {% if bar_image %}
+                                                <img src="{{ url_for('static', filename=bar_image) }}" alt="{{ search_value }}역의 요일별 승차총승객수">
+                                            {% else %}
+                                                <p>그래프 이미지를 찾을 수 없습니다.</p>
+                                            {% endif %}
+                                        </div>
+                                    </a>   
+                                </div>
+                            </div>-->
+                            
+                        </div>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                DataTable Example
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>사용일자</th>
+                                            <th>노선명</th>
+                                            <th>역명</th>
+                                            <th>승차총승객수</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>사용일자</th>
+                                            <th>노선명</th>
+                                            <th>역명</th>
+                                            <th>승차총승객수</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td>20230701</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>22671</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230702</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>10296</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230703</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>27066</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230704</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>28036</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230705</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>28508</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230706</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>30160</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230707</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>28395</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230708</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>16250</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230709</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>9497</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230710</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>25879</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230711</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>26930</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230713</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>30336</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230714</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>31980</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230715</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>16649</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230716</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>10358</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230717</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>26304</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230718</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>27542</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230719</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>28539</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230720</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>29156</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230721</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>28716</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230722</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>15870</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230723</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>8784</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230724</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>26038</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230725</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>27753</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230726</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>27824</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230727</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>28117</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230728</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>27880</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230729</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>13961</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230730</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>10857</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20230731</td>
+                                            <td>1호선</td>
+                                            <td>시청</td>
+                                            <td>25494</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                            <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+                                                    
+                        </div>
+                    </div>
+                </main>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="static/js/scripts_login.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="static/assets/demo/chart-area-demo.js"></script>
+        <script src="static/assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        <script src="static/js/datatables-simple-demo.js"></script>
+    </body>
+</html>

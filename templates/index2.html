@@ -1,0 +1,481 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Travel &mdash; 100% Free Fully Responsive HTML5 Template by FREEHTML5.co</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+		<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+		<meta name="author" content="FREEHTML5.CO" />
+
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+		<link rel="shortcut icon" href="favicon.ico">
+
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+		
+		<!-- Animate.css -->
+		<link rel="stylesheet" href="static/css/animate.css">
+		<!-- Icomoon Icon Fonts-->
+		<link rel="stylesheet" href="static/css/icomoon.css">
+		<!-- Bootstrap  -->
+		<link rel="stylesheet" href="static/css/bootstrap.css">
+		<!-- Superfish -->
+		<link rel="stylesheet" href="static/css/superfish.css">
+		<!-- Magnific Popup -->
+		<link rel="stylesheet" href="static/css/magnific-popup.css">
+		<!-- Date Picker -->
+		<link rel="stylesheet" href="static/css/bootstrap-datepicker.min.css">
+		<!-- CS Select -->
+		<link rel="stylesheet" href="static/css/cs-select.css">
+		<link rel="stylesheet" href="static/css/cs-skin-border.css">
+		
+		<link rel="stylesheet" href="static/css/style.css">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$.ajax({
+					type: 'GET',
+					url: '/save_people_bbox',  // 서버 측 라우트
+					success: function(data) {
+						// data 변수에 서버로부터 받은 값을 저장한 후 사용
+						var savedPeople = parseInt(data);
+						// 이후 savedPeople 변수를 활용하여 필요한 동작 수행
+					}
+				});
+			});
+		</script>
+	
+		<!-- Modernizr JS -->
+		<script src="static/js/modernizr-2.6.2.min.js"></script>
+		<!-- FOR IE9 below -->
+		<!--[if lt IE 9]>
+		<script src="js/respond.min.js"></script>
+		<![endif]-->
+
+	</head>
+	<body>
+		<div id="fh5co-wrapper">
+		<div id="fh5co-page">
+
+		<header id="fh5co-header-section" class="sticky-banner">
+			<div class="container">
+				<div class="nav-header">
+					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
+					<h1 id="fh5co-logo"><a href="/index2"></i>Bean</a></h1>
+					<!-- START #fh5co-menu-wrap -->
+					<nav id="fh5co-menu-wrap" role="navigation">
+						<ul class="sf-menu" id="fh5co-primary-menu">
+							<li class="active"><a href="/index2">Home</a></li>
+                            <li><a href="/data">Data</a></li>
+							<li><a href="/">Logout</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+
+		<!-- end:header-top -->
+	
+		<div class="fh5co-hero">
+			<div class="fh5co-overlay"></div>
+			<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(static/images/cover_bg_1.jpg);">
+				<div class="desc">
+					<div class="container">
+						<div class="row">
+							<div class="col-sm-5 col-md-5">
+								<div class="tabulation animate-box">
+
+								  <!-- Nav tabs -->
+								   <ul class="nav nav-tabs" role="tablist">
+								      <li role="presentation" class="active">
+								      	<a href="#flights" aria-controls="flights" role="tab" data-toggle="tab">Inside</a>
+								      </li>
+								      <li role="presentation">
+								    	   <a href="#hotels" aria-controls="hotels" role="tab" data-toggle="tab">Platform</a>
+								      </li>
+								   </ul>
+
+								   <!-- Tab panes -->
+									<div class="tab-content">
+									 <div role="tabpanel" class="tab-pane active" id="flights">
+										<form class="row" action = "/index2" method="post" id = 'stationForm'>
+											<div class="col-xxs-12 col-xs-12 mt">
+												<div class="input-field">
+													<label for="from">Station:</label>
+													<input type="text" name = "Station" class="form-control" id="from-place" placeholder="Station"/>
+												</div>
+											</div>
+											<div class="col-xxs-12 col-xs-6 mt alternate">
+												<div class="input-field">
+													<label for="from">Last Station:</label>
+													<span type="text" class="form-control" id="last_station">{{last_station}}</span>
+												</div>
+											</div>
+											<div class="col-xxs-12 col-xs-6 mt alternate">
+												<div class="input-field">
+													<label for="date-start">Next Station:</label>
+													<span type="text" class="form-control" id="next_station">{{next_station}}</span>
+												</div>
+											</div>
+											<div class="col-sm-12 mt">
+												<section>
+													<label for="class">Congestion:</label>
+													<div class="progress-bar">
+														<div class="progress" id="progress_value_inside" style="width: {{ progress_value_inside }}%;">
+															{{ progress_value_inside }}%
+														</div>
+													</div>
+												</section>
+											</div>
+											
+											<div class="col-xxs-12 col-xs-6 mt">
+												<section>
+													<label for="class">Arrive:</label>
+													<select class="cs-select cs-skin-border">
+														<option id = "arrive1" value="" disabled selected>{{arrive1}}</option>
+														<option id = "arrive1" value="1">{{arrive1}}</option>
+														<option id = "arrive2" value="2">{{arrive2}}</option>
+														<!--<option value="3">3</option>
+														<option value="4">4</option>-->
+													</select>
+												</section>
+											</div>
+											<div class="col-xxs-12 col-xs-6 mt">
+												<section>
+													<label for="class">:</label>
+													<select class="cs-select cs-skin-border">
+														<option value="" disabled selected>1</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<!--<option value="3">3</option>
+														<option value="4">4</option>-->
+													</select>
+												</section>
+											</div>
+											<!--<div class="col-xxs-12 col-xs-6 mt">
+												<section>
+													
+													<select class="cs-select cs-skin-border">
+														<option value="" disabled selected>1</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+													</select>
+												</section>
+											</div>
+											<div class="col-xxs-12 col-xs-6 mt">
+												<section>
+													<select class="cs-select cs-skin-border">
+														<option value="" disabled selected>1</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+													</select>
+												</section>
+											</div>-->
+											<div class="col-xs-12">
+												<button type="button" class="btn btn-primary btn-block" id = updateButton>Search Station</button>
+											</div>
+										</form>
+										<!--<script>
+											$(document).ready(function() {
+												$('#updateButton').click(function(event) {
+													event.preventDefault();
+													
+													$.ajax({
+														type: 'POST',
+														url: '/update_variable', // 서버 측 라우트
+														data: $('#stationForm').serialize(),
+														success: function(data) {
+															$('#last_station').text(data.last_station)
+															$('#next_station').text(data.next_station);
+                    										$('#arrive1').text(data.arrive1);
+                    										$('#arrive2').text(data.arrive2);
+                    										$('#progress_value_platform').text(data.progress_value_platform + '%');
+                    										$('#progress_value_inside').text(data.progress_value_inside + '%');
+														}
+													});
+												});
+											});
+										</script>-->
+									 </div>
+
+									 <div role="tabpanel" class="tab-pane" id="hotels">
+									 	<form class="row" action = "/index2" method="post" id = "stationForm">
+											<div class="col-xxs-12 col-xs-12 mt">
+												<div class="input-field">
+													<label for="from">Station:</label>
+													<input type="text" name = "Station" class="form-control" id="from-place" placeholder="Station"/>
+												</div>
+											</div>
+											<div class="col-xxs-12 col-xs-6 mt alternate">
+												<div class="input-field">
+													<label for="from">Last Station:</label>
+													<span type="text" class="form-control" id="to-place">{{last_station}}</span>
+												</div>
+											</div>
+											<div class="col-xxs-12 col-xs-6 mt alternate">
+												<div class="input-field">
+													<label for="date-start">Next Station:</label>
+													<span type="text" class="form-control" id="to-place">{{next_station}}</span>
+												</div>
+												<!--<div id="outputArea"></div>-->
+											</div>
+											<div class="col-sm-12 mt">
+												<section>
+													<label for="class">Congestion:</label>
+													<div class="progress-bar">
+														<div class="progress" id="progress_value_platform" style="width: {{ progress_value_platform }}%;">
+															{{ progress_value_platform }}%
+														</div>
+													</div>
+												</section>
+											</div>
+											
+
+											<div class="col-xxs-12 col-xs-6 mt">
+												<section>
+													<label for="class">Arrive:</label>
+													<span type="text" class="form-control" id="to-place">{{arrive1}}</span>
+												</section>
+											</div>
+											<div class="col-xxs-12 col-xs-6 mt">
+												<section>
+													<label for="class">:</label>
+													<span type="text" class="form-control" id="to-place">{{arrive2}}</span>
+												</section>
+											</div>
+											<!--<div class="col-xxs-12 col-xs-6 mt">
+												<section>
+													
+													<select class="cs-select cs-skin-border">
+														<option value="" disabled selected>1</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+													</select>
+												</section>
+											</div>
+											<div class="col-xxs-12 col-xs-6 mt">
+												<section>
+													<select class="cs-select cs-skin-border">
+														<option value="" disabled selected>1</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+													</select>
+												</section>
+											</div>-->
+											<div class="col-xs-12">
+												<button type="button" class="btn btn-primary btn-block" id = updateButton>Search Station</button>
+												
+											</div>
+
+										</form>
+
+										<!--<script>
+											$(document).ready(function() {
+												$('#updateButton').click(function(event) {
+													event.preventDefault();
+													
+													$.ajax({
+														type: 'POST',
+														url: '/update_variable', // 서버 측 라우트
+														data: $('#stationForm').serialize(),
+														success: function(data) {
+															$('#last_station').text(data.last_station)
+															$('#next_station').text(data.next_station);
+                    										$('#arrive1').text(data.arrive1);
+                    										$('#arrive2').text(data.arrive2);
+                    										$('#progress_value_platform').text(data.progress_value_platform + '%');
+                    										$('#progress_value_inside').text(data.progress_value_inside + '%');
+														}
+													});
+												});
+											});
+										</script>-->
+									</div>
+
+									<!--<div role="tabpanel" class="tab-pane" id="packages">
+									<div class="row">
+											<div class="col-xxs-12 col-xs-6 mt">
+												<div class="input-field">
+													<label for="from">City:</label>
+													<input type="text" class="form-control" id="from-place" placeholder="Los Angeles, USA"/>
+												</div>
+											</div>
+											<div class="col-xxs-12 col-xs-6 mt">
+												<div class="input-field">
+													<label for="from">Destination:</label>
+													<input type="text" class="form-control" id="to-place" placeholder="Tokyo, Japan"/>
+												</div>
+											</div>
+											<div class="col-xxs-12 col-xs-6 mt alternate">
+												<div class="input-field">
+													<label for="date-start">Departs:</label>
+													<input type="text" class="form-control" id="date-start" placeholder="mm/dd/yyyy"/>
+												</div>
+											</div>
+											<div class="col-xxs-12 col-xs-6 mt alternate">
+												<div class="input-field">
+													<label for="date-end">Return:</label>
+													<input type="text" class="form-control" id="date-end" placeholder="mm/dd/yyyy"/>
+												</div>
+											</div>
+											<div class="col-sm-12 mt">
+												<section>
+													<label for="class">Rooms:</label>
+													<select class="cs-select cs-skin-border">
+														<option value="" disabled selected>1</option>
+														<option value="economy">1</option>
+														<option value="first">2</option>
+														<option value="business">3</option>
+													</select>
+												</section>
+											</div>
+											<div class="col-xxs-12 col-xs-6 mt">
+												<section>
+													<label for="class">Adult:</label>
+													<select class="cs-select cs-skin-border">
+														<option value="" disabled selected>1</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+													</select>
+												</section>
+											</div>
+											<div class="col-xxs-12 col-xs-6 mt">
+												<section>
+													<label for="class">Children:</label>
+													<select class="cs-select cs-skin-border">
+														<option value="" disabled selected>1</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+													</select>
+												</section>
+											</div>
+											<div class="col-xs-12">
+												<input type="submit" class="btn btn-primary btn-block" value="Search Packages">
+											</div>
+										</div>
+									</div>-->
+									</div>
+
+								</div>
+							</div>
+							
+							<div class="tabulation2 animate-box" id="map" style="width:60%; height:543px">
+								<div class="animation-box" style="position: relative; overflow: hidden;">
+									<img src="{{url_for('video') }}" alt="Video Stream" style="width: 100%; height: 100%;">
+									<!--<video autoplay loop muted style="width: 100%; height: 100%;">
+										<source src="{{url_for('video') }}" alt="Video Stream">
+										<source src="{{ url_for('static', filename='video1.mp4') }}" type="video/mp4">
+									</video>-->
+									<!--<iframe src = "/login"></iframe>-->
+								</div>
+								<script type="text/javascript">
+									document.addEventListener("keydown", function(event) {
+										if (event.key === "Escape") {
+											fetch('/toggle_pause')
+												.then(response => response.text())
+												.then(data => {
+													console.log(data);
+												});
+										}
+										else if(event.key === "S" || event.key === "s") {
+											fetch('/save_people_bbox')
+												.then(response => response.text())
+												.then(data => {
+													console.log("현재 사람 수 저장됨:", data);
+													// 현재 people_bbox 값을 서버에 요청하여 저장한 후 콘솔에 표시하거나 원하는 작업에 활용.
+												});
+										}
+									});
+								</script>
+							</div>
+							<!--<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey='key를 입력해야'"></script>
+							<script>
+    							var mapContainer = document.getElementById('map');
+    							var mapOption = {
+        							center: new kakao.maps.LatLng(37.5665, 126.9780), // 서울의 좌표
+        							level: 3 // 지도의 확대 레벨
+    							};
+    							var map = new kakao.maps.Map(mapContainer, mapOption);
+							</script>-->
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		
+		<footer>
+			<div id="footer">
+				<div class="container">
+					<div class="row row-bottom-padded-md">
+						
+						<div class="row">
+							<div class="col-md-6 col-md-offset-3 text-center">
+								<p class="fh5co-social-icons">
+									<a href="https://github.com/ghwjd/Bean.git" target="_blank"><i class="icon-github"></i></a>
+								</p>
+								<!--Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>-->
+							</div>
+						</div>
+				</div>
+			</div>
+		</footer>
+
+	
+
+		</div>
+	<!-- END fh5co-page -->
+
+	<!-- END fh5co-wrapper -->
+
+	<!-- jQuery -->
+
+
+	<script src="static/js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="static/js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="static/js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="static/js/jquery.waypoints.min.js"></script>
+	<script src="static/js/sticky.js"></script>
+
+	<!-- Stellar -->
+	<script src="static/js/jquery.stellar.min.js"></script>
+	<!-- Superfish -->
+	<script src="static/js/hoverIntent.js"></script>
+	<script src="static/js/superfish.js"></script>
+	<!-- Magnific Popup -->
+	<script src="static/js/jquery.magnific-popup.min.js"></script>
+	<script src="static/js/magnific-popup-options.js"></script>
+	<!-- Date Picker -->
+	<script src="static/js/bootstrap-datepicker.min.js"></script>
+	<!-- CS Select -->
+	<script src="static/js/classie.js"></script>
+	<script src="static/js/selectFx.js"></script>
+	
+	<!-- Main JS -->
+	<script src="static/js/main.js"></script>
+
+	</body>
+</html>
+
