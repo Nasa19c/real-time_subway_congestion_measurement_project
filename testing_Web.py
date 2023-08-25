@@ -80,13 +80,21 @@ def toggle_pause(): #특정 키를 누르면 last_people에 특정 키를 누른
         print("Last People:", last_people)
     return "Paused" if paused else "Playing" 
 
-@app.route('/save_people_bbox')
+#s키 눌렀을때
+'''@app.route('/save_people_bbox')
 def save_people_bbox():
     global people_bbox
     current_people = people_bbox[-1] if people_bbox else 0
     saved_people = current_people
     print("current people: ", current_people)
+    return str(saved_people)'''
+
+@app.route('/save_people_bbox', methods=['GET'])
+def save_people_bbox_get():
+    current_people = people_bbox[-1] if people_bbox else 0
+    saved_people = current_people
     return str(saved_people)
+
 
 def calculate_progress_values(current_people):
     progress_value_platform = (current_people / 30) * 100

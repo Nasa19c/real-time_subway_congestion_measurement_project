@@ -183,7 +183,27 @@
 												</section>
 											</div>-->
 											<div class="col-xs-12">
-												<button type="button" class="btn btn-primary btn-block" id = updateButton>Search Station</button>
+												<button type="button" class="btn btn-primary btn-block" id = updateButtonInside>Search Station</button>
+												<script>
+													$(document).ready(function() {
+														$('#updateButtonInside').click(function(event) {
+															event.preventDefault();
+
+															$.ajax({
+																type: 'GET',
+																url: '/save_people_bbox',  // 서버 측 라우트
+																success: function(data) {
+																	var savedPeople = parseInt(data);
+
+																	// savedPeople 값을 활용하여 프로그레스 바 업데이트
+																	var progressValueInside = Math.floor((savedPeople / 30) * 100); // 예: 50%의 경우 savedPeople 값 자체를 활용하거나 조정
+																	$('#progress_value_inside').css('width', progressValueInside + '%').text(progressValueInside + '%');
+																}
+															});
+														});
+													});
+
+												</script>
 											</div>
 										</form>
 										<!--<script>
@@ -278,10 +298,46 @@
 												</section>
 											</div>-->
 											<div class="col-xs-12">
-												<button type="button" class="btn btn-primary btn-block" id = updateButton>Search Station</button>
-												
-											</div>
+												<button type="button" class="btn btn-primary btn-block" id="updateButtonPlatform">Search Station</button>
+												<script>
+													$(document).ready(function() {
+														$('#updateButtonPlatform').click(function(event) {
+															event.preventDefault();
 
+															$.ajax({
+																type: 'GET',
+																url: '/save_people_bbox',  // 서버 측 라우트
+																success: function(data) {
+																	var savedPeople = parseInt(data);
+
+																	// savedPeople 값을 활용하여 프로그레스 바 업데이트
+																	var progressValuePlatform = Math.floor((savedPeople / 30) * 100); // 예: 50%의 경우 savedPeople 값 자체를 활용하거나 조정
+																	$('#progress_value_platform').css('width', progressValuePlatform + '%').text(progressValuePlatform + '%');
+																}
+															});
+														});
+													});
+												</script>
+											</div>
+											<!--<script>
+												$(document).ready(function() {
+													$('#updateButton').click(function(event) {
+														event.preventDefault();
+											
+														// AJAX 요청을 통해 사람 수 값을 서버에 요청
+														$.ajax({
+															type: 'GET',
+															url: '/save_people_bbox',  // 서버 측 라우트
+															success: function(data) {
+																// data 변수에 서버로부터 받은 값을 저장한 후 사용
+																var savedPeople = parseInt(data);
+																// 이후 savedPeople 변수를 활용하여 필요한 동작 수행
+																// 예: 화면에 표시, 계산, 업데이트 등
+															}
+														});
+													});
+												});
+											</script>-->
 										</form>
 
 										<!--<script>
