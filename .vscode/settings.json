@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
         "ultralytics"
-    ]
+    ],
+    "commentTranslate.multiLineMerge": true
 }

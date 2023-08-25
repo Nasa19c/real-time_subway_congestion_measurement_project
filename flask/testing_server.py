@@ -47,12 +47,14 @@ last_station=None
 next_station=None
 arrive1=None
 arrive2=None
-progress_value_platfrom=random.randrange(0,100)
-progress_value_inside=random.randrange(0,100)
+progress_value_go = random.randrange(0,100)
+progress_value_inside = random.randrange(0,100)
+
+
 
 @app.route("/index2")
 def index2():
-    return render_template('index2.html',last_station=last_station, next_station = next_station, arrive1 = arrive1, arrive2 = arrive2, progress_value_platfrom=progress_value_platfrom, progress_value_inside= progress_value_inside)
+    return render_template('index2.html',last_station=last_station, next_station = next_station, arrive1 = arrive1, arrive2 = arrive2, progress_value_go=progress_value_go, progress_value_inside= progress_value_inside)
 
 
 
@@ -62,7 +64,6 @@ def update_variable():
     global next_station
     global arrive1
     global arrive2
-    global progress_value_platfrom
     global progress_value_inside
 
     selected_station = request.form.get('Station')
@@ -73,11 +74,29 @@ def update_variable():
             next_station = station_info['next']
             arrive1 = station_info['arrive1']
             arrive2 = station_info['arrive2']
-            progress_value_platform = random.randrange(0,100)
             progress_value_inside = random.randrange(0,100)
     
-            return jsonify({"last_station":last_station, "next_station": next_station, "arrive1": arrive1, "arrive2": arrive2, "progress_value_platfrom":progress_value_platfrom, "progress_value_inside": progress_value_inside})
+            return jsonify({"last_station":last_station, "next_station": next_station, "arrive1": arrive1, "arrive2": arrive2, "progress_value_inside": progress_value_inside})
 
+@app.route('/update_variable_1', methods=['POST'])
+def update_variable_1():
+    global last_station
+    global next_station
+    global arrive1
+    global arrive2
+    global progress_value_go
+
+    selected_station = request.form.get('Station1')
+
+    for station_info in topics:
+        if selected_station == station_info['id']:
+            last_station = station_info['last']
+            next_station = station_info['next']
+            arrive1 = station_info['arrive1']
+            arrive2 = station_info['arrive2']
+            progress_value_go = random.randrange(0,100)
+    
+            return jsonify({"last_station":last_station, "next_station": next_station, "arrive1": arrive1, "arrive2": arrive2, "progress_value_go":progress_value_go})
 
 # @app.route('/update_variable', methods=['GET','POST'])
 # def update_variable():

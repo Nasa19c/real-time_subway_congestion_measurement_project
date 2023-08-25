@@ -160,16 +160,16 @@
 
 
 
-	// Progress Bar Animation
-	var bar = document.querySelector('.progress');
-	var totalMinwon = progress_value; // 예시로 100으로 설정, 실제로 사용하는 값으로 변경해주세요
-	var t = 0;
-	bar.style.width = 0;
+	// // Progress Bar Animation
+	// var bar = document.querySelector('.progress');
+	// var totalMinwon = progress_value; // 예시로 100으로 설정, 실제로 사용하는 값으로 변경해주세요
+	// var t = 0;
+	// bar.style.width = 0;
 
-	const barAnimation = setInterval(() => {
-		bar.style.width = t + '%';
-		t++ >= totalMinwon && clearInterval(barAnimation);
-	}, 10);
+	// const barAnimation = setInterval(() => {
+	// 	bar.style.width = t + '%';
+	// 	t++ >= totalMinwon && clearInterval(barAnimation);
+	// }, 10);
 
 
 }());

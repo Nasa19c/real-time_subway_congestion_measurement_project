@@ -93,7 +93,7 @@
 
 								   <!-- Tab panes -->
 									<div class="tab-content">
-									 <div role="tabpanel" class="tab-pane active" id="flights">
+									<div role="tabpanel" class="tab-pane active" id="flights">
 										<form class="row" action = "/index2" method="post" id = 'stationForm'>
 											<div class="col-xxs-12 col-xs-12 mt">
 												<div class="input-field">
@@ -131,50 +131,26 @@
 											<div class="col-xxs-12 col-xs-6 mt">
 												<section>
 													<label for="class">Arrive:</label>
-													<select class="cs-select cs-skin-border">
-														<option id = "arrive1" value="" disabled selected>{{arrive1}}</option>
-														<option id = "arrive1" value="1">{{arrive1}}</option>
-														<option id = "arrive2" value="2">{{arrive2}}</option>
-														<!--<option value="3">3</option>
-														<option value="4">4</option>-->
-													</select>
+													<span type="text" class="form-control" id="arrive1">{{arrive1}}</span>
 												</section>
 											</div>
 											<div class="col-xxs-12 col-xs-6 mt">
 												<section>
 													<label for="class">:</label>
-													<select class="cs-select cs-skin-border">
-														<option value="" disabled selected>1</option>
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<!--<option value="3">3</option>
-														<option value="4">4</option>-->
-													</select>
-												</section>
-											</div>
-											<!--<div class="col-xxs-12 col-xs-6 mt">
-												<section>
-													
-													<select class="cs-select cs-skin-border">
-														<option value="" disabled selected>1</option>
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>
-													</select>
+													<span type="text" class="form-control" id="">1</span>
 												</section>
 											</div>
 											<div class="col-xxs-12 col-xs-6 mt">
 												<section>
-													<select class="cs-select cs-skin-border">
-														<option value="" disabled selected>1</option>
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>
-													</select>
+													<span type="text" class="form-control" id="arrive2">{{arrive2}}</span>
 												</section>
-											</div>-->
+											</div>
+											<div class="col-xxs-12 col-xs-6 mt">
+												<section>
+													<span type="text" class="form-control" id="">2</span>
+												</section>
+											</div>
+				
 											<div class="col-xs-12">
 												<button type="button" class="btn btn-primary btn-block" id = updateButton>Search Station</button>
 											</div>
@@ -189,12 +165,16 @@
 														url: '/update_variable', // 서버 측 라우트
 														data: $('#stationForm').serialize(),
 														success: function(data) {
+
+															const bar = document.querySelector('.progress');
+                											const totalMinwon = data.progress_value_inside; // 서버에서 받아온 값으로 설정
+                											bar.style.width = totalMinwon + '%';
+
 															$('#last_station').text(data.last_station)
 															$('#next_station').text(data.next_station);
-                    										$('#arrive1').text(data.arrive1);
-                    										$('#arrive2').text(data.arrive2);
-                    										$('#progress_value_platform').text(data.progress_value_platform + '%');
-                    										$('#progress_value_inside').text(data.progress_value_inside + '%');
+        													$('#arrive1').val(data.arrive1).text(data.arrive1);
+        													$('#arrive2').val(data.arrive2).text(data.arrive2);
+        													$('#progress_value_inside').text(data.progress_value_inside + '%');
 														}
 													});
 												});
@@ -203,23 +183,23 @@
 									 </div>
 
 									 <div role="tabpanel" class="tab-pane" id="hotels">
-									 	<form class="row" action = "/index2" method="post" id = "stationForm">
+									 	<form class="row" action = "/index2" method="post" id = "stationForm1">
 											<div class="col-xxs-12 col-xs-12 mt">
 												<div class="input-field">
 													<label for="from">Station:</label>
-													<input type="text" name = "Station" class="form-control" id="from-place" placeholder="Station"/>
+													<input type="text" name = "Station1" class="form-control" id="Station1" placeholder="Station"/>
 												</div>
 											</div>
 											<div class="col-xxs-12 col-xs-6 mt alternate">
 												<div class="input-field">
 													<label for="from">Last Station:</label>
-													<span type="text" class="form-control" id="to-place">{{last_station}}</span>
+													<span type="text" class="form-control" id="last_station_1">{{last_station}}</span>
 												</div>
 											</div>
 											<div class="col-xxs-12 col-xs-6 mt alternate">
 												<div class="input-field">
 													<label for="date-start">Next Station:</label>
-													<span type="text" class="form-control" id="to-place">{{next_station}}</span>
+													<span type="text" class="form-control" id="next_station_1">{{next_station}}</span>
 												</div>
 												<!--<div id="outputArea"></div>-->
 											</div>
@@ -227,8 +207,8 @@
 												<section>
 													<label for="class">Congestion:</label>
 													<div class="progress-bar">
-														<div class="progress" style="width: {{ progress_value_platform }}%;">
-															{{ progress_value_platform }}%
+														<div id = "progress_value_platform_1" class="progress" style="width: {{ progress_value_go }}%;">
+															{{ progress_value_go }}%
 														</div>
 													</div>
 												</section>
@@ -238,40 +218,18 @@
 											<div class="col-xxs-12 col-xs-6 mt">
 												<section>
 													<label for="class">Arrive:</label>
-													<span type="text" class="form-control" id="to-place">{{arrive1}}</span>
+													<span type="text" class="form-control" id="arrive1_1">{{arrive1}}</span>
 												</section>
 											</div>
 											<div class="col-xxs-12 col-xs-6 mt">
 												<section>
 													<label for="class">:</label>
-													<span type="text" class="form-control" id="to-place">{{arrive2}}</span>
+													<span type="text" class="form-control" id="arrive2_1">{{arrive2}}</span>
 												</section>
 											</div>
-											<!--<div class="col-xxs-12 col-xs-6 mt">
-												<section>
-													
-													<select class="cs-select cs-skin-border">
-														<option value="" disabled selected>1</option>
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>
-													</select>
-												</section>
-											</div>
-											<div class="col-xxs-12 col-xs-6 mt">
-												<section>
-													<select class="cs-select cs-skin-border">
-														<option value="" disabled selected>1</option>
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>
-													</select>
-												</section>
-											</div>-->
+											
 											<div class="col-xs-12">
-												<button type="button" class="btn btn-primary btn-block" id = updateButton>Search Station</button>
+												<button type="button" class="btn btn-primary btn-block" id = updateButton1>Search Station</button>
 												
 											</div>
 
@@ -279,20 +237,24 @@
 
 										<script>
 											$(document).ready(function() {
-												$('#updateButton').click(function(event) {
+												$('#updateButton1').click(function(event) {
 													event.preventDefault();
 													
 													$.ajax({
 														type: 'POST',
-														url: '/update_variable', // 서버 측 라우트
-														data: $('#stationForm').serialize(),
+														url: '/update_variable_1', // 서버 측 라우트
+														data: $('#stationForm1').serialize(),
 														success: function(data) {
-															$('#last_station').text(data.last_station)
-															$('#next_station').text(data.next_station);
-                    										$('#arrive1').text(data.arrive1);
-                    										$('#arrive2').text(data.arrive2);
-                    										$('#progress_value_platform').text(data.progress_value_platform + '%');
-                    										$('#progress_value_inside').text(data.progress_value_inside + '%');
+
+															const bar_1 = document.querySelector('.progress1');
+                											const totalMinwon_1 = data.progress_value_go; // 서버에서 받아온 값으로 설정
+                											bar_1.style.width = totalMinwon_1 + '%';
+
+															$('#last_station_1').text(data.last_station)
+															$('#next_station_1').text(data.next_station);
+                    										$('#arrive1_1').text(data.arrive1);
+                    										$('#arrive2_1').text(data.arrive2);
+                    										$('#progress_value_platform_1').text(data.progress_value_go + '%');
 														}
 													});
 												});
