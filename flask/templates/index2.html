@@ -40,7 +40,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 
 
-
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<!-- Modernizr JS -->
 	<script src="static/js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
@@ -94,7 +94,7 @@
 								   <!-- Tab panes -->
 									<div class="tab-content">
 									 <div role="tabpanel" class="tab-pane active" id="flights">
-										<form class="row" action = "/index2" method="post">
+										<form class="row" action = "/index2" method="post" id = 'stationForm'>
 											<div class="col-xxs-12 col-xs-12 mt">
 												<div class="input-field">
 													<label for="from">Station:</label>
@@ -104,20 +104,20 @@
 											<div class="col-xxs-12 col-xs-6 mt alternate">
 												<div class="input-field">
 													<label for="from">Last Station:</label>
-													<span type="text" class="form-control" id="to-place">{{last_station}}</span>
+													<span type="text" class="form-control" id="last_station">{{last_station}}</span>
 												</div>
 											</div>
 											<div class="col-xxs-12 col-xs-6 mt alternate">
 												<div class="input-field">
 													<label for="date-start">Next Station:</label>
-													<span type="text" class="form-control" id="to-place">{{next_station}}</span>
+													<span type="text" class="form-control" id="next_station">{{next_station}}</span>
 												</div>
 											</div>
 											<div class="col-sm-12 mt">
 												<section>
 													<label for="class">Congestion:</label>
 													<div class="progress-bar">
-														<div class="progress" style = "width: {{ progress_value_inside }}%;">
+														<div class="progress" id = "progress_value_inside" style = "width: {{ progress_value_inside }}%;">
 															{{ progress_value_inside }}%
 														</div>
 													</div>
@@ -132,9 +132,9 @@
 												<section>
 													<label for="class">Arrive:</label>
 													<select class="cs-select cs-skin-border">
-														<option value="" disabled selected>{{arrive1}}</option>
-														<option value="1">{{arrive1}}</option>
-														<option value="2">{{arrive2}}</option>
+														<option id = "arrive1" value="" disabled selected>{{arrive1}}</option>
+														<option id = "arrive1" value="1">{{arrive1}}</option>
+														<option id = "arrive2" value="2">{{arrive2}}</option>
 														<!--<option value="3">3</option>
 														<option value="4">4</option>-->
 													</select>
@@ -176,13 +176,34 @@
 												</section>
 											</div>-->
 											<div class="col-xs-12">
-												<input type="submit" class="btn btn-primary btn-block" value = "Search Station">
+												<button type="button" class="btn btn-primary btn-block" id = updateButton>Search Station</button>
 											</div>
 										</form>
+										<script>
+											$(document).ready(function() {
+												$('#updateButton').click(function(event) {
+													event.preventDefault();
+													
+													$.ajax({
+														type: 'POST',
+														url: '/update_variable', // 서버 측 라우트
+														data: $('#stationForm').serialize(),
+														success: function(data) {
+															$('#last_station').text(data.last_station)
+															$('#next_station').text(data.next_station);
+                    										$('#arrive1').text(data.arrive1);
+                    										$('#arrive2').text(data.arrive2);
+                    										$('#progress_value_platform').text(data.progress_value_platform + '%');
+                    										$('#progress_value_inside').text(data.progress_value_inside + '%');
+														}
+													});
+												});
+											});
+										</script>
 									 </div>
 
 									 <div role="tabpanel" class="tab-pane" id="hotels">
-									 	<form class="row" action = "/index2" method="post">
+									 	<form class="row" action = "/index2" method="post" id = "stationForm">
 											<div class="col-xxs-12 col-xs-12 mt">
 												<div class="input-field">
 													<label for="from">Station:</label>
@@ -250,10 +271,33 @@
 												</section>
 											</div>-->
 											<div class="col-xs-12">
-												<button type="submit" class="btn btn-primary btn-block">Search Station</button>
+												<button type="button" class="btn btn-primary btn-block" id = updateButton>Search Station</button>
+												
 											</div>
 
 										</form>
+
+										<script>
+											$(document).ready(function() {
+												$('#updateButton').click(function(event) {
+													event.preventDefault();
+													
+													$.ajax({
+														type: 'POST',
+														url: '/update_variable', // 서버 측 라우트
+														data: $('#stationForm').serialize(),
+														success: function(data) {
+															$('#last_station').text(data.last_station)
+															$('#next_station').text(data.next_station);
+                    										$('#arrive1').text(data.arrive1);
+                    										$('#arrive2').text(data.arrive2);
+                    										$('#progress_value_platform').text(data.progress_value_platform + '%');
+                    										$('#progress_value_inside').text(data.progress_value_inside + '%');
+														}
+													});
+												});
+											});
+										</script>
 									</div>
 
 									<!--<div role="tabpanel" class="tab-pane" id="packages">
@@ -332,6 +376,7 @@
 									<video autoplay loop muted style="width: 100%; height: 100%;">
 										<source src="{{ url_for('static', filename='video1.mp4') }}" type="video/mp4">
 									</video>
+									<!--<iframe src = "/login"></iframe>-->
 								</div>
 							</div>
 							<!--<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey='key를 입력해야'"></script>
