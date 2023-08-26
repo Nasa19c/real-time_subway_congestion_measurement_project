@@ -679,6 +679,14 @@ figure {
   color: #111;
 }
 
+.progress-bar .progress1 {
+  height: 40px;
+  padding: 0;
+  text-align: center;
+  background-color: #4F98FF;
+  color: #111;
+}
+
 @media screen and (max-width: 768px) {
   .nav-tabs a {
     font-weight: normal;

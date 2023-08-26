@@ -207,7 +207,7 @@
 												<section>
 													<label for="class">Congestion:</label>
 													<div class="progress-bar">
-														<div id = "progress_value_platform_1" class="progress" style="width: {{ progress_value_go }}%;">
+														<div id = "progress_value_go" class="progress1" style="width: {{ progress_value_go }}%;">
 															{{ progress_value_go }}%
 														</div>
 													</div>
@@ -254,7 +254,7 @@
 															$('#next_station_1').text(data.next_station);
                     										$('#arrive1_1').text(data.arrive1);
                     										$('#arrive2_1').text(data.arrive2);
-                    										$('#progress_value_platform_1').text(data.progress_value_go + '%');
+                    										$('#progress_value_go').text(data.progress_value_go + '%');
 														}
 													});
 												});

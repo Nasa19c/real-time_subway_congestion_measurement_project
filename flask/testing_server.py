@@ -78,6 +78,13 @@ def update_variable():
     
             return jsonify({"last_station":last_station, "next_station": next_station, "arrive1": arrive1, "arrive2": arrive2, "progress_value_inside": progress_value_inside})
 
+    return jsonify({"last_station":None,
+                    "next_station":None,
+                    "arrive1":None,
+                    "arrive2":None,
+                    "progress_value_go" : None,
+                    "progress_value_inside" : 0})
+
 @app.route('/update_variable_1', methods=['POST'])
 def update_variable_1():
     global last_station
@@ -97,6 +104,12 @@ def update_variable_1():
             progress_value_go = random.randrange(0,100)
     
             return jsonify({"last_station":last_station, "next_station": next_station, "arrive1": arrive1, "arrive2": arrive2, "progress_value_go":progress_value_go})
+
+    return jsonify({"last_station":None,
+                    "next_station":None,
+                    "arrive1":None,
+                    "arrive2":None,
+                    "progress_value_go" : 0,})
 
 # @app.route('/update_variable', methods=['GET','POST'])
 # def update_variable():
