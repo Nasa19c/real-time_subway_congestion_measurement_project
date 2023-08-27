@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Response, redirect, request, session
+from flask import Flask, render_template, Response, redirect, request, session, jsonify
 import cv2
 import numpy as np
 from ultralytics import YOLO
@@ -9,7 +9,9 @@ from read_csv import draw_si_station_chart, draw_si_station_weekday_chart, draw_
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
 cap = cv2.VideoCapture("video1.mp4")
-model = YOLO("yolov8m.pt")
+
+
+
 
 people_bbox = []  # 감지된 사람의 수를 저장할 리스트
 paused = False  # 동영상 일시 정지 여부를 저장하는 변수
@@ -34,42 +36,14 @@ draw_jong_station_weekday_chart(data)
 draw_se_station_chart(data)
 draw_se_station_weekday_chart(data)
 
-def gen_frames():
-    global paused, last_people  # paused 변수를 전역 변수로 선언
+last_station=None
+next_station=None
+arrive1=None
+arrive2=None
+'''progress_value_go = random.randrange(0,100)
+progress_value_inside = random.randrange(0,100)'''
 
-    while True:
-        if not paused:
-            ret, frame = cap.read()
-            if not ret:
-                break
-            
-            results = model(frame, device="mps")
-            result = results[0]
-            bboxes = np.array(result.boxes.xyxy.cpu(), dtype="int")
-            classes = np.array(result.boxes.cls.cpu(), dtype="int")
-            
-            persons_mask = classes == 0  # 0은 persons 클래스의 인덱스
-            frame_persons_bboxes = bboxes[persons_mask]
-            
-            num_persons = frame_persons_bboxes.shape[0]  # 현재 프레임에서 감지된 사람의 수
-            people_bbox.append(num_persons)
-            
-            last_people = 0  # 기본값을 0으로 설정
-            current_people = 0
 
-            for bbox in frame_persons_bboxes:
-                (x, y, x2, y2) = bbox
-                cv2.rectangle(frame, (x, y), (x2, y2), (0, 0, 225), 2)
-                cv2.putText(frame, "Person", (x, y-5), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 225), 2)
-            
-            ret, buffer = cv2.imencode('.jpg', frame)
-            frame = buffer.tobytes()
-            
-            yield (b'--frame\r\n'
-                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
-        else:
-            yield (b'--frame\r\n'
-                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 @app.route('/toggle_pause')
 def toggle_pause(): #특정 키를 누르면 last_people에 특정 키를 누른 시점의 값을 저장하도록 하자.
@@ -118,7 +92,7 @@ def login():
     else:
         return render_template('login.html')
 
-@app.route("/index2", methods=['GET', 'POST'])
+'''@app.route("/index2", methods=['GET', 'POST'])
 def index2():
     progress_value_platform = 0
     progress_value_inside = 0    # 초기 값으로 설정
@@ -132,7 +106,107 @@ def index2():
                                        progress_value_inside=progress_value_inside)
     else:
         return render_template('index2.html', progress_value_platform=progress_value_platform,
-                               progress_value_inside=progress_value_inside)
+                               progress_value_inside=progress_value_inside)'''
+
+@app.route("/index2")
+def index2():
+    return render_template('index2.html',last_station=last_station, next_station = next_station, arrive1 = arrive1, arrive2 = arrive2)
+
+@app.route('/update_variable', methods=['POST'])
+def update_variable():
+    global last_station
+    global next_station
+    global arrive1
+    global arrive2
+    global cap
+
+    selected_station = request.form.get('Station')
+    
+    if selected_station == '종각역':
+        video_path = "video1.mp4"
+    elif selected_station == '시청역':
+        video_path = "video2.mp4"
+    elif selected_station == '서울역':
+        video_path = "video3.mp4"
+    
+    new_cap = cv2.VideoCapture(video_path)
+    cap = new_cap
+
+    
+
+
+    '''
+    list = []
+    
+    if selected_station == '종각역':
+        if selected_station
+        cap = cv2.VideoCapture("video1.mp4")
+    elif selected_station == '시청역':
+        cap = cv2.VideoCapture("video2.mp4")
+    elif selected_station == '서울역':
+        cap = cv2.VideoCapture("video3.mp4")
+    else:
+        cap = None'''
+
+
+
+    for station_info in topics:
+        if selected_station == station_info['id']:
+            last_station = station_info['last']
+            next_station = station_info['next']
+            arrive1 = station_info['arrive1']
+            arrive2 = station_info['arrive2']
+            '''video_path = station_info['video_path']
+            break'''
+    
+            return jsonify({"last_station":last_station, "next_station": next_station, "arrive1": arrive1, "arrive2": arrive2})
+    '''if video_path is not None:
+        new_cap = cv2.VideoCapture(video_path)
+        cap.release()
+        cap =  new_cap'''
+
+    #return jsonify({"last_station":last_station, "next_station": next_station, "arrive1": arrive1, "arrive2": arrive2})
+
+    return jsonify({"last_station":None,
+                    "next_station":None,
+                    "arrive1":None,
+                    "arrive2":None,
+                    })
+
+@app.route('/update_variable_1', methods=['POST'])
+def update_variable_1():
+    global last_station
+    global next_station
+    global arrive1
+    global arrive2
+    global cap
+
+    selected_station = request.form.get('Station1')
+
+    if selected_station == '종각역':
+        cap = cv2.VideoCapture("video1.mp4")
+    elif selected_station == '시청역':
+        cap = cv2.VideoCapture("video2.mp4")
+    elif selected_station == '서울역':
+        cap = cv2.VideoCapture("video3.mp4")
+    else:
+        cap = None
+
+    for station_info in topics:
+        if selected_station == station_info['id']:
+            last_station = station_info['last']
+            next_station = station_info['next']
+            arrive1 = station_info['arrive1']
+            arrive2 = station_info['arrive2']
+    
+            return jsonify({"last_station":last_station, "next_station": next_station, "arrive1": arrive1, "arrive2": arrive2})
+
+    return jsonify({"last_station":None,
+                    "next_station":None,
+                    "arrive1":None,
+                    "arrive2":None,
+                    })
+
 
 
 '''@app.route("/index2", methods =['GET','POST'])
@@ -155,6 +229,45 @@ def index2(): #여기에 특정 값을 저장한 변수를 넣기
 #         if station_info['id'] == '종각역':
 #             return render_template('index2.html', last_station = station_info['last'], next_station = station_info['next'], arrive1 = station_info['arrive1'], arrive2 = station_info['arrive2'],progress_value_platform = progress_value_platform, progress_value_inside = progress_value_inside)
 
+model = YOLO("yolov8m.pt")
+
+
+def gen_frames():
+    global paused, last_people, cap  # paused 변수를 전역 변수로 선언
+
+    while True:
+        if not paused:
+            ret, frame = cap.read()
+            if not ret:
+                break
+            
+            results = model(frame, device="mps")
+            result = results[0]
+            bboxes = np.array(result.boxes.xyxy.cpu(), dtype="int")
+            classes = np.array(result.boxes.cls.cpu(), dtype="int")
+            
+            persons_mask = classes == 0  # 0은 persons 클래스의 인덱스
+            frame_persons_bboxes = bboxes[persons_mask]
+            
+            num_persons = frame_persons_bboxes.shape[0]  # 현재 프레임에서 감지된 사람의 수
+            people_bbox.append(num_persons)
+            
+            last_people = 0  # 기본값을 0으로 설정
+            current_people = 0
+
+            for bbox in frame_persons_bboxes:
+                (x, y, x2, y2) = bbox
+                cv2.rectangle(frame, (x, y), (x2, y2), (0, 0, 225), 2)
+                cv2.putText(frame, "Person", (x, y-5), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 225), 2)
+            
+            ret, buffer = cv2.imencode('.jpg', frame)
+            frame = buffer.tobytes()
+            
+            yield (b'--frame\r\n'
+                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+        else:
+            yield (b'--frame\r\n'
+                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 @app.route("/data")
 def data():
@@ -177,7 +290,7 @@ def video():
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__=="__main__":
-    app.run()
+    app.run(debug=True)
 
 
 # 지도는 request로 불러와야함

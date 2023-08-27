@@ -135,59 +135,51 @@
 												</section>
 											</div>
 											
+
+
 											<div class="col-xxs-12 col-xs-6 mt">
 												<section>
 													<label for="class">Arrive:</label>
-													<select class="cs-select cs-skin-border">
-														<option id = "arrive1" value="" disabled selected>{{arrive1}}</option>
-														<option id = "arrive1" value="1">{{arrive1}}</option>
-														<option id = "arrive2" value="2">{{arrive2}}</option>
-														<!--<option value="3">3</option>
-														<option value="4">4</option>-->
-													</select>
+													<span type="text" class="form-control" id="arrive1">{{arrive1}}</span>
 												</section>
 											</div>
 											<div class="col-xxs-12 col-xs-6 mt">
 												<section>
 													<label for="class">:</label>
-													<select class="cs-select cs-skin-border">
-														<option value="" disabled selected>1</option>
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<!--<option value="3">3</option>
-														<option value="4">4</option>-->
-													</select>
-												</section>
-											</div>
-											<!--<div class="col-xxs-12 col-xs-6 mt">
-												<section>
-													
-													<select class="cs-select cs-skin-border">
-														<option value="" disabled selected>1</option>
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>
-													</select>
+													<span type="text" class="form-control" id="">1</span>
 												</section>
 											</div>
 											<div class="col-xxs-12 col-xs-6 mt">
 												<section>
-													<select class="cs-select cs-skin-border">
-														<option value="" disabled selected>1</option>
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>
-													</select>
+													<span type="text" class="form-control" id="arrive2">{{arrive2}}</span>
 												</section>
-											</div>-->
+											</div>
+											<div class="col-xxs-12 col-xs-6 mt">
+												<section>
+													<span type="text" class="form-control" id="">2</span>
+												</section>
+											</div>
+
 											<div class="col-xs-12">
 												<button type="button" class="btn btn-primary btn-block" id = updateButtonInside>Search Station</button>
 												<script>
 													$(document).ready(function() {
 														$('#updateButtonInside').click(function(event) {
 															event.preventDefault();
+
+															$.ajax({
+																type: 'POST',
+																url: '/update_variable', // 서버 측 라우트
+																data: $('#stationForm').serialize(),
+																success: function(data) {
+									
+																
+																	$('#last_station').text(data.last_station)
+																	$('#next_station').text(data.next_station);
+        															$('#arrive1').val(data.arrive1).text(data.arrive1);
+        															$('#arrive2').val(data.arrive2).text(data.arrive2);
+																}
+															});
 
 															$.ajax({
 																type: 'GET',
@@ -200,6 +192,22 @@
 																	$('#progress_value_inside').css('width', progressValueInside + '%').text(progressValueInside + '%');
 																}
 															});
+															var selectedStation = $('input[name=Station]').val();
+															if(selectedStation=='종각역'){
+																$('#video1').show();
+																$('#video2, #video3').hide();
+															}
+															else if(selectedStation=='시청역'){
+																$('#video2').show();
+																$('#video1, #video3').hide();
+															}
+															else if(selectedStation=='서울역'){
+																$('#video3').show();
+																$('#video1, #video2').hide();
+															}
+															else{
+																$('#video1, #video2, #video3').hide();
+															}
 														});
 													});
 
@@ -230,79 +238,72 @@
 									 </div>
 
 									 <div role="tabpanel" class="tab-pane" id="hotels">
-									 	<form class="row" action = "/index2" method="post" id = "stationForm">
-											<div class="col-xxs-12 col-xs-12 mt">
-												<div class="input-field">
-													<label for="from">Station:</label>
-													<input type="text" name = "Station" class="form-control" id="from-place" placeholder="Station"/>
-												</div>
-											</div>
-											<div class="col-xxs-12 col-xs-6 mt alternate">
-												<div class="input-field">
-													<label for="from">Last Station:</label>
-													<span type="text" class="form-control" id="to-place">{{last_station}}</span>
-												</div>
-											</div>
-											<div class="col-xxs-12 col-xs-6 mt alternate">
-												<div class="input-field">
-													<label for="date-start">Next Station:</label>
-													<span type="text" class="form-control" id="to-place">{{next_station}}</span>
-												</div>
-												<!--<div id="outputArea"></div>-->
-											</div>
-											<div class="col-sm-12 mt">
-												<section>
-													<label for="class">Congestion:</label>
-													<div class="progress-bar">
-														<div class="progress" id="progress_value_platform" style="width: {{ progress_value_platform }}%;">
-															{{ progress_value_platform }}%
-														</div>
-													</div>
-												</section>
-											</div>
-											
+										<form class="row" action = "/index2" method="post" id = "stationForm1">
+										   <div class="col-xxs-12 col-xs-12 mt">
+											   <div class="input-field">
+												   <label for="from">Station:</label>
+												   <input type="text" name = "Station1" class="form-control" id="Station1" placeholder="Station"/>
+											   </div>
+										   </div>
+										   <div class="col-xxs-12 col-xs-6 mt alternate">
+											   <div class="input-field">
+												   <label for="from">Last Station:</label>
+												   <span type="text" class="form-control" id="last_station_1">{{last_station}}</span>
+											   </div>
+										   </div>
+										   <div class="col-xxs-12 col-xs-6 mt alternate">
+											   <div class="input-field">
+												   <label for="date-start">Next Station:</label>
+												   <span type="text" class="form-control" id="next_station_1">{{next_station}}</span>
+											   </div>
+											   <!--<div id="outputArea"></div>-->
+										   </div>
+										   <div class="col-sm-12 mt">
+											   <section>
+												   <label for="class">Congestion:</label>
+												   <div class="progress-bar">
+													   <div id = "progress_value_go" class="progress1" style="width: {{ progress_value_go }}%;">
+														   {{ progress_value_go }}%
+													   </div>
+												   </div>
+											   </section>
+										   </div>
+										   
 
-											<div class="col-xxs-12 col-xs-6 mt">
-												<section>
-													<label for="class">Arrive:</label>
-													<span type="text" class="form-control" id="to-place">{{arrive1}}</span>
-												</section>
-											</div>
-											<div class="col-xxs-12 col-xs-6 mt">
-												<section>
-													<label for="class">:</label>
-													<span type="text" class="form-control" id="to-place">{{arrive2}}</span>
-												</section>
-											</div>
-											<!--<div class="col-xxs-12 col-xs-6 mt">
-												<section>
-													
-													<select class="cs-select cs-skin-border">
-														<option value="" disabled selected>1</option>
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>
-													</select>
-												</section>
-											</div>
-											<div class="col-xxs-12 col-xs-6 mt">
-												<section>
-													<select class="cs-select cs-skin-border">
-														<option value="" disabled selected>1</option>
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>
-													</select>
-												</section>
-											</div>-->
+										   <div class="col-xxs-12 col-xs-6 mt">
+											   <section>
+												   <label for="class">Arrive:</label>
+												   <span type="text" class="form-control" id="arrive1_1">{{arrive1}}</span>
+											   </section>
+										   </div>
+										   <div class="col-xxs-12 col-xs-6 mt">
+											   <section>
+												   <label for="class">:</label>
+												   <span type="text" class="form-control" id="arrive2_1">{{arrive2}}</span>
+											   </section>
+										   </div>
+										   
 											<div class="col-xs-12">
 												<button type="button" class="btn btn-primary btn-block" id="updateButtonPlatform">Search Station</button>
 												<script>
 													$(document).ready(function() {
 														$('#updateButtonPlatform').click(function(event) {
 															event.preventDefault();
+
+
+															$.ajax({
+																type: 'POST',
+																url: '/update_variable_1', // 서버 측 라우트
+																data: $('#stationForm1').serialize(),
+																success: function(data) {
+																
+																
+																	$('#last_station_1').text(data.last_station)
+																	$('#next_station_1').text(data.next_station);
+                    												$('#arrive1_1').text(data.arrive1);
+                    												$('#arrive2_1').text(data.arrive2);
+																}
+															});
 
 															$.ajax({
 																type: 'GET',
@@ -312,9 +313,26 @@
 
 																	// savedPeople 값을 활용하여 프로그레스 바 업데이트
 																	var progressValuePlatform = Math.floor((savedPeople / 30) * 100); // 예: 50%의 경우 savedPeople 값 자체를 활용하거나 조정
-																	$('#progress_value_platform').css('width', progressValuePlatform + '%').text(progressValuePlatform + '%');
+																	$('#progress_value_go').css('width', progressValuePlatform + '%').text(progressValuePlatform + '%');
 																}
 															});
+
+															var selectedStation = $('input[name=Station]').val();
+															if(selectedStation=='종각역'){
+																$('#video1').show();
+																$('#video2, #video3').hide();
+															}
+															else if(selectedStation=='시청역'){
+																$('#video2').show();
+																$('#video1, #video3').hide();
+															}
+															else if(selectedStation=='서울역'){
+																$('#video3').show();
+																$('#video1, #video2').hide();
+															}
+															else{
+																$('#video1, #video2, #video3').hide();
+															}
 														});
 													});
 												</script>
@@ -438,11 +456,14 @@
 								<div class="animation-box" style="position: relative; overflow: hidden;">
 									<img src="{{url_for('video') }}" alt="Video Stream" style="width: 100%; height: 100%;">
 									<!--<video autoplay loop muted style="width: 100%; height: 100%;">
-										<source src="{{url_for('video') }}" alt="Video Stream">
-										<source src="{{ url_for('static', filename='video1.mp4') }}" type="video/mp4">
+										<source src="{{url_for('video') }}" type="video/mp4">
 									</video>-->
 									<!--<iframe src = "/login"></iframe>-->
 								</div>
+								<!--function updateVideoStream(){
+										const videoElement = document.getElementById('videoStream');
+										videoElement.src = "{{url_for('video') }}?" + new Date().getTime();
+									}-->
 								<script type="text/javascript">
 									document.addEventListener("keydown", function(event) {
 										if (event.key === "Escape") {
