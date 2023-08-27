@@ -5,67 +5,68 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 	<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Travel &mdash; 100% Free Fully Responsive HTML5 Template by FREEHTML5.co</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
-	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
-	<meta name="author" content="FREEHTML5.CO" />
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Travel &mdash; 100% Free Fully Responsive HTML5 Template by FREEHTML5.co</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+		<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+		<meta name="author" content="FREEHTML5.CO" />
 
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+		<link rel="shortcut icon" href="favicon.ico">
 
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+		
+		<!-- Animate.css -->
+		<link rel="stylesheet" href="static/css/animate.css">
+		<!-- Icomoon Icon Fonts-->
+		<link rel="stylesheet" href="static/css/icomoon.css">
+		<!-- Bootstrap  -->
+		<link rel="stylesheet" href="static/css/bootstrap.css">
+		<!-- Superfish -->
+		<link rel="stylesheet" href="static/css/superfish.css">
+		<!-- Magnific Popup -->
+		<link rel="stylesheet" href="static/css/magnific-popup.css">
+		<!-- Date Picker -->
+		<link rel="stylesheet" href="static/css/bootstrap-datepicker.min.css">
+		<!-- CS Select -->
+		<link rel="stylesheet" href="static/css/cs-select.css">
+		<link rel="stylesheet" href="static/css/cs-skin-border.css">
+		
+		<link rel="stylesheet" href="static/css/style.css">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 
-	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-	<link rel="shortcut icon" href="favicon.ico">
-
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		
 	
-	<!-- Animate.css -->
-	<link rel="stylesheet" href="static/css/animate.css">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="static/css/icomoon.css">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="static/css/bootstrap.css">
-	<!-- Superfish -->
-	<link rel="stylesheet" href="static/css/superfish.css">
-	<!-- Magnific Popup -->
-	<link rel="stylesheet" href="static/css/magnific-popup.css">
-	<!-- Date Picker -->
-	<link rel="stylesheet" href="static/css/bootstrap-datepicker.min.css">
-	<!-- CS Select -->
-	<link rel="stylesheet" href="static/css/cs-select.css">
-	<link rel="stylesheet" href="static/css/cs-skin-border.css">
-	
-	<link rel="stylesheet" href="static/css/style.css">
-
-
-	<!-- Modernizr JS -->
-	<script src="static/js/modernizr-2.6.2.min.js"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
+		<!-- Modernizr JS -->
+		<script src="static/js/modernizr-2.6.2.min.js"></script>
+		<!-- FOR IE9 below -->
+		<!--[if lt IE 9]>
+		<script src="js/respond.min.js"></script>
+		<![endif]-->
 
 	</head>
 	<body>
 		<div id="fh5co-wrapper">
 		<div id="fh5co-page">
 
-		<header id="fh5co-header-section" class="sticky-banner">
-			<div class="container">
-				<div class="nav-header">
-					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-					<h1 id="fh5co-logo"><a href="/"></i>Bean</a></h1>
-					<!-- START #fh5co-menu-wrap -->
-					<nav id="fh5co-menu-wrap" role="navigation">
-						<ul class="sf-menu" id="fh5co-primary-menu">
-							<li class="active"><a href="/">Home</a></li>
-							<li><a href="/login">Login</a></li>
-						</ul>
-					</nav>
-				</div>
-			</div>
-		</header>
+        <header id="fh5co-header-section" class="sticky-banner">
+            <div class="container">
+                <div class="nav-header">
+                    <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
+                    <h1 id="fh5co-logo"><a href="/"></i>Bean</a></h1>
+                    <!-- START #fh5co-menu-wrap -->
+                    <nav id="fh5co-menu-wrap" role="navigation">
+                        <ul class="sf-menu" id="fh5co-primary-menu">
+                            <li class="active"><a href="/">Home</a></li>
+                            <li><a href="/login">Login</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
 
 		<!-- end:header-top -->
 	
@@ -91,265 +92,224 @@
 								   <!-- Tab panes -->
 									<div class="tab-content">
 									 <div role="tabpanel" class="tab-pane active" id="flights">
-										<div class="row">
+										<form class="row" action = "/index" method="post" id = 'stationForm'>
 											<div class="col-xxs-12 col-xs-12 mt">
 												<div class="input-field">
 													<label for="from">Station:</label>
-													<input type="text" class="form-control" id="from-place" placeholder="Station"/>
+													<input type="text" name = "Station" class="form-control" id="from-place" placeholder="Station"/>
 												</div>
 											</div>
 											<div class="col-xxs-12 col-xs-6 mt alternate">
 												<div class="input-field">
 													<label for="from">Last Station:</label>
-													<input type="text" class="form-control" id="to-place" placeholder="Last"/>
+													<span type="text" class="form-control" id="last_station">{{last_station}}</span>
 												</div>
 											</div>
 											<div class="col-xxs-12 col-xs-6 mt alternate">
 												<div class="input-field">
 													<label for="date-start">Next Station:</label>
-													<input type="text" class="form-control" id="date-start" placeholder="Next"/>
+													<span type="text" class="form-control" id="next_station">{{next_station}}</span>
 												</div>
 											</div>
 											<div class="col-sm-12 mt">
 												<section>
 													<label for="class">Congestion:</label>
 													<div class="progress-bar">
-														<div class="progress"> </div>
+														<div class="progress" id="progress_value_inside" style="width: {{ progress_value_inside }}%;">
+															{{ progress_value_inside }}%
+														</div>
 													</div>
 												</section>
 											</div>
-											<style>
-												.result-box {
-													padding: 10px;
-													margin-top: 10px;
-													width: 100%;
-													height: 30px;
-													background: linear-gradient(to right, blue,skyblue, green,greenyellow, yellow, orange, red);
-													border-radius: 5px;
-													color: white;
-												}
-											</style>
+											
 
 
-											
-											
 											<div class="col-xxs-12 col-xs-6 mt">
 												<section>
 													<label for="class">Arrive:</label>
-													<select class="cs-select cs-skin-border">
-														<option value="" disabled selected>18:40</option>
-														<option value="1">18:40</option>
-														<option value="2">18:46</option>
-														<!--<option value="3">3</option>
-														<option value="4">4</option>-->
-													</select>
+													<span type="text" class="form-control" id="arrive1">{{arrive1}}</span>
 												</section>
 											</div>
 											<div class="col-xxs-12 col-xs-6 mt">
 												<section>
 													<label for="class">:</label>
-													<select class="cs-select cs-skin-border">
-														<option value="" disabled selected>1</option>
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<!--<option value="3">3</option>
-														<option value="4">4</option>-->
-													</select>
-												</section>
-											</div>
-											<!--<div class="col-xxs-12 col-xs-6 mt">
-												<section>
-													
-													<select class="cs-select cs-skin-border">
-														<option value="" disabled selected>1</option>
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>
-													</select>
+													<span type="text" class="form-control" id="">1</span>
 												</section>
 											</div>
 											<div class="col-xxs-12 col-xs-6 mt">
 												<section>
-													<select class="cs-select cs-skin-border">
-														<option value="" disabled selected>1</option>
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>
-													</select>
+													<span type="text" class="form-control" id="arrive2">{{arrive2}}</span>
 												</section>
-											</div>-->
-											<div class="col-xs-12">
-												<input type="submit" class="btn btn-primary btn-block" value="Search Station">
 											</div>
-										</div>
+											<div class="col-xxs-12 col-xs-6 mt">
+												<section>
+													<span type="text" class="form-control" id="">2</span>
+												</section>
+											</div>
+
+											<div class="col-xs-12">
+												<button type="button" class="btn btn-primary btn-block" id = updateButtonInside>Search Station</button>
+												<script>
+													$(document).ready(function() {
+														$('#updateButtonInside').click(function(event) {
+															event.preventDefault();
+
+															$.ajax({
+																type: 'POST',
+																url: '/update_variable', // 서버 측 라우트
+																data: $('#stationForm').serialize(),
+																success: function(data) {
+									
+																
+																	$('#last_station').text(data.last_station)
+																	$('#next_station').text(data.next_station);
+        															$('#arrive1').val(data.arrive1).text(data.arrive1);
+        															$('#arrive2').val(data.arrive2).text(data.arrive2);
+																}
+															});
+
+															$.ajax({
+																type: 'GET',
+																url: '/save_people_bbox',  // 서버 측 라우트
+																success: function(data) {
+																	var savedPeople = parseInt(data);
+
+																	// savedPeople 값을 활용하여 프로그레스 바 업데이트
+																	var progressValueInside = Math.floor((savedPeople / 30) * 100); // 예: 50%의 경우 savedPeople 값 자체를 활용하거나 조정
+																	$('#progress_value_inside').css('width', progressValueInside + '%').text(progressValueInside + '%');
+																}
+															});
+															var selectedStation = $('input[name=Station]').val();
+															if(selectedStation=='종각역'){
+																$('#video1').show();
+																$('#video2, #video3').hide();
+															}
+															else if(selectedStation=='시청역'){
+																$('#video2').show();
+																$('#video1, #video3').hide();
+															}
+															else if(selectedStation=='서울역'){
+																$('#video3').show();
+																$('#video1, #video2').hide();
+															}
+															else{
+																$('#video1, #video2, #video3').hide();
+															}
+														});
+													});
+
+												</script>
+											</div>
+										</form>
+										
 									 </div>
 
 									 <div role="tabpanel" class="tab-pane" id="hotels">
-									 	<div class="row">
-											<div class="col-xxs-12 col-xs-12 mt">
-												<div class="input-field">
-													<label for="from">Station:</label>
-													<input type="text" class="form-control" id="from-place" placeholder="Station"/>
-												</div>
-											</div>
-											<div class="col-xxs-12 col-xs-6 mt alternate">
-												<div class="input-field">
-													<label for="date-start">Last Station:</label>
-													<input type="text" class="form-control" id="date-start" placeholder="Last"/>
-												</div>
-												<!--<div id="outputArea"></div>-->
-											</div>
-											<div class="col-xxs-12 col-xs-6 mt alternate">
-												<div class="input-field">
-													<label for="date-end">Next Station:</label>
-													<input type="text" class="form-control" id="date-end" placeholder="Next"/>
-												</div>
-												<!--<div id="outputArea"></div>-->
-											</div>
-											<div class="col-sm-12 mt">
-												<section>
-													<label for="class">Congestion:</label>
-													<div class="progress-bar">
-														<div class="progress"> </div>
-													</div>
-												</section>
-												
-												
-											</div>
+										<form class="row" action = "/index" method="post" id = "stationForm1">
+										   <div class="col-xxs-12 col-xs-12 mt">
+											   <div class="input-field">
+												   <label for="from">Station:</label>
+												   <input type="text" name = "Station1" class="form-control" id="Station1" placeholder="Station"/>
+											   </div>
+										   </div>
+										   <div class="col-xxs-12 col-xs-6 mt alternate">
+											   <div class="input-field">
+												   <label for="from">Last Station:</label>
+												   <span type="text" class="form-control" id="last_station_1">{{last_station}}</span>
+											   </div>
+										   </div>
+										   <div class="col-xxs-12 col-xs-6 mt alternate">
+											   <div class="input-field">
+												   <label for="date-start">Next Station:</label>
+												   <span type="text" class="form-control" id="next_station_1">{{next_station}}</span>
+											   </div>
+											   <!--<div id="outputArea"></div>-->
+										   </div>
+										   <div class="col-sm-12 mt">
+											   <section>
+												   <label for="class">Congestion:</label>
+												   <div class="progress-bar">
+													   <div id = "progress_value_go" class="progress1" style="width: {{ progress_value_go }}%;">
+														   {{ progress_value_go }}%
+													   </div>
+												   </div>
+											   </section>
+										   </div>
+										   
 
-											<style>
-												.result-box {
-													padding: 10px;
-													margin-top: 10px;
-													width: 100%;
-													height: 30px;
-													background: linear-gradient(to right, blue,skyblue, green,greenyellow, yellow, orange, red);
-        											border-radius: 5px;
-        											color: white;
-												}
-											</style>
-
-											<div class="col-xxs-12 col-xs-6 mt">
-												<section>
-													<label for="class">Arrive:</label>
-													<select class="cs-select cs-skin-border">
-														<option value="" disabled selected>18:40</option>
-														<!--<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>-->
-													</select>
-												</section>
-											</div>
-											<div class="col-xxs-12 col-xs-6 mt">
-												<section>
-													<label for="class">:</label>
-													<select class="cs-select cs-skin-border">
-														<option value="" disabled selected>18:46</option>
-														<!--<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>-->
-													</select>
-												</section>
-											</div>
-											<!--<div class="col-xxs-12 col-xs-6 mt">
-												<section>
-													
-													<select class="cs-select cs-skin-border">
-														<option value="" disabled selected>1</option>
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>
-													</select>
-												</section>
-											</div>
-											<div class="col-xxs-12 col-xs-6 mt">
-												<section>
-													<select class="cs-select cs-skin-border">
-														<option value="" disabled selected>1</option>
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>
-													</select>
-												</section>
-											</div>-->
+										   <div class="col-xxs-12 col-xs-6 mt">
+											   <section>
+												   <label for="class">Arrive:</label>
+												   <span type="text" class="form-control" id="arrive1_1">{{arrive1}}</span>
+											   </section>
+										   </div>
+										   <div class="col-xxs-12 col-xs-6 mt">
+											   <section>
+												   <label for="class">:</label>
+												   <span type="text" class="form-control" id="arrive2_1">{{arrive2}}</span>
+											   </section>
+										   </div>
+										   
 											<div class="col-xs-12">
-												<input type="submit" class="btn btn-primary btn-block" value="Search Station">
+												<button type="button" class="btn btn-primary btn-block" id="updateButtonPlatform">Search Station</button>
+												<script>
+													$(document).ready(function() {
+														$('#updateButtonPlatform').click(function(event) {
+															event.preventDefault();
+
+
+															$.ajax({
+																type: 'POST',
+																url: '/update_variable_1', // 서버 측 라우트
+																data: $('#stationForm1').serialize(),
+																success: function(data) {
+																
+																
+																	$('#last_station_1').text(data.last_station)
+																	$('#next_station_1').text(data.next_station);
+                    												$('#arrive1_1').text(data.arrive1);
+                    												$('#arrive2_1').text(data.arrive2);
+																}
+															});
+
+															$.ajax({
+																type: 'GET',
+																url: '/save_people_bbox',  // 서버 측 라우트
+																success: function(data) {
+																	var savedPeople = parseInt(data);
+
+																	// savedPeople 값을 활용하여 프로그레스 바 업데이트
+																	var progressValuePlatform = Math.floor((savedPeople / 30) * 100); // 예: 50%의 경우 savedPeople 값 자체를 활용하거나 조정
+																	$('#progress_value_go').css('width', progressValuePlatform + '%').text(progressValuePlatform + '%');
+																}
+															});
+
+															var selectedStation = $('input[name=Station]').val();
+															if(selectedStation=='종각역'){
+																$('#video1').show();
+																$('#video2, #video3').hide();
+															}
+															else if(selectedStation=='시청역'){
+																$('#video2').show();
+																$('#video1, #video3').hide();
+															}
+															else if(selectedStation=='서울역'){
+																$('#video3').show();
+																$('#video1, #video2').hide();
+															}
+															else{
+																$('#video1, #video2, #video3').hide();
+															}
+														});
+													});
+												</script>
 											</div>
-										</div>
+											
+										</form>
+
+										
 									</div>
 
-									<div role="tabpanel" class="tab-pane" id="packages">
-									<div class="row">
-											<div class="col-xxs-12 col-xs-6 mt">
-												<div class="input-field">
-													<label for="from">City:</label>
-													<input type="text" class="form-control" id="from-place" placeholder="Los Angeles, USA"/>
-												</div>
-											</div>
-											<div class="col-xxs-12 col-xs-6 mt">
-												<div class="input-field">
-													<label for="from">Destination:</label>
-													<input type="text" class="form-control" id="to-place" placeholder="Tokyo, Japan"/>
-												</div>
-											</div>
-											<div class="col-xxs-12 col-xs-6 mt alternate">
-												<div class="input-field">
-													<label for="date-start">Departs:</label>
-													<input type="text" class="form-control" id="date-start" placeholder="mm/dd/yyyy"/>
-												</div>
-											</div>
-											<div class="col-xxs-12 col-xs-6 mt alternate">
-												<div class="input-field">
-													<label for="date-end">Return:</label>
-													<input type="text" class="form-control" id="date-end" placeholder="mm/dd/yyyy"/>
-												</div>
-											</div>
-											<div class="col-sm-12 mt">
-												<section>
-													<label for="class">Rooms:</label>
-													<select class="cs-select cs-skin-border">
-														<option value="" disabled selected>1</option>
-														<option value="economy">1</option>
-														<option value="first">2</option>
-														<option value="business">3</option>
-													</select>
-												</section>
-											</div>
-											<div class="col-xxs-12 col-xs-6 mt">
-												<section>
-													<label for="class">Adult:</label>
-													<select class="cs-select cs-skin-border">
-														<option value="" disabled selected>1</option>
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>
-													</select>
-												</section>
-											</div>
-											<div class="col-xxs-12 col-xs-6 mt">
-												<section>
-													<label for="class">Children:</label>
-													<select class="cs-select cs-skin-border">
-														<option value="" disabled selected>1</option>
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>
-													</select>
-												</section>
-											</div>
-											<div class="col-xs-12">
-												<input type="submit" class="btn btn-primary btn-block" value="Search Packages">
-											</div>
-										</div>
-									</div>
 									</div>
 
 								</div>
@@ -365,7 +325,7 @@
         							level: 3 // 지도의 확대 레벨
     							};
     							var map = new kakao.maps.Map(mapContainer, mapOption);
-							</script>
+							</script>							
 						</div>
 					</div>
 				</div>
@@ -383,7 +343,6 @@
 								<p class="fh5co-social-icons">
 									<a href="https://github.com/ghwjd/Bean.git" target="_blank"><i class="icon-github"></i></a>
 								</p>
-								<!--Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>-->
 							</div>
 						</div>
 				</div>
@@ -395,11 +354,8 @@
 		</div>
 	<!-- END fh5co-page -->
 
-	<!-- END fh5co-wrapper -->
 
 	<!-- jQuery -->
-
-
 	<script src="static/js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
 	<script src="static/js/jquery.easing.1.3.js"></script>

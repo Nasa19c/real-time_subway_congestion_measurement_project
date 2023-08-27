@@ -40,8 +40,6 @@ last_station=None
 next_station=None
 arrive1=None
 arrive2=None
-'''progress_value_go = random.randrange(0,100)
-progress_value_inside = random.randrange(0,100)'''
 
 
 
@@ -54,14 +52,6 @@ def toggle_pause(): #특정 키를 누르면 last_people에 특정 키를 누른
         print("Last People:", last_people)
     return "Paused" if paused else "Playing" 
 
-#s키 눌렀을때
-'''@app.route('/save_people_bbox')
-def save_people_bbox():
-    global people_bbox
-    current_people = people_bbox[-1] if people_bbox else 0
-    saved_people = current_people
-    print("current people: ", current_people)
-    return str(saved_people)'''
 
 @app.route('/save_people_bbox', methods=['GET'])
 def save_people_bbox_get():
@@ -70,14 +60,9 @@ def save_people_bbox_get():
     return str(saved_people)
 
 
-def calculate_progress_values(current_people):
-    progress_value_platform = (current_people / 30) * 100
-    progress_value_inside = (current_people / 30) * 100
-    return progress_value_platform, progress_value_inside
-
 @app.route("/")
 def index():
-    return render_template('index.html')
+    return render_template('index.html',last_station=last_station, next_station = next_station, arrive1 = arrive1, arrive2 = arrive2)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -92,21 +77,6 @@ def login():
     else:
         return render_template('login.html')
 
-'''@app.route("/index2", methods=['GET', 'POST'])
-def index2():
-    progress_value_platform = 0
-    progress_value_inside = 0    # 초기 값으로 설정
-
-    if request.method == 'POST':
-        for station_info in topics:
-            if request.form['Station'] == station_info['id']:
-                return render_template('index2.html', last_station=station_info['last'], next_station=station_info['next'],
-                                       arrive1=station_info['arrive1'], arrive2=station_info['arrive2'],
-                                       progress_value_platform=progress_value_platform,
-                                       progress_value_inside=progress_value_inside)
-    else:
-        return render_template('index2.html', progress_value_platform=progress_value_platform,
-                               progress_value_inside=progress_value_inside)'''
 
 @app.route("/index2")
 def index2():
@@ -132,23 +102,6 @@ def update_variable():
     new_cap = cv2.VideoCapture(video_path)
     cap = new_cap
 
-    
-
-
-    '''
-    list = []
-    
-    if selected_station == '종각역':
-        if selected_station
-        cap = cv2.VideoCapture("video1.mp4")
-    elif selected_station == '시청역':
-        cap = cv2.VideoCapture("video2.mp4")
-    elif selected_station == '서울역':
-        cap = cv2.VideoCapture("video3.mp4")
-    else:
-        cap = None'''
-
-
 
     for station_info in topics:
         if selected_station == station_info['id']:
@@ -156,16 +109,8 @@ def update_variable():
             next_station = station_info['next']
             arrive1 = station_info['arrive1']
             arrive2 = station_info['arrive2']
-            '''video_path = station_info['video_path']
-            break'''
     
             return jsonify({"last_station":last_station, "next_station": next_station, "arrive1": arrive1, "arrive2": arrive2})
-    '''if video_path is not None:
-        new_cap = cv2.VideoCapture(video_path)
-        cap.release()
-        cap =  new_cap'''
-
-    #return jsonify({"last_station":last_station, "next_station": next_station, "arrive1": arrive1, "arrive2": arrive2})
 
     return jsonify({"last_station":None,
                     "next_station":None,
@@ -207,27 +152,6 @@ def update_variable_1():
                     "arrive2":None,
                     })
 
-
-
-'''@app.route("/index2", methods =['GET','POST'])
-def index2(): #여기에 특정 값을 저장한 변수를 넣기
-    progress_value_platform = random.randrange(0,100)
-    progress_value_inside = random.randrange(0,100)
-    if request.method =='POST':
-        for station_info in topics:
-            if request.form['Station'] == station_info['id']:
-                return render_template('index2.html', last_station = station_info['last'], next_station = station_info['next'], arrive1 = station_info['arrive1'], arrive2 = station_info['arrive2'],progress_value_platform = progress_value_platform, progress_value_inside = progress_value_inside)
-    else:
-        return render_template('index2.html',progress_value_platform = progress_value_platform, progress_value_inside = progress_value_inside)
-'''
-
-# @app.route("/index2/1/", methods=['GET','POST'])
-# def index2_1():
-#     progress_value_platform = random.randrange(0,100)
-#     progress_value_inside = random.randrange(0,100)
-#     for station_info in topics:
-#         if station_info['id'] == '종각역':
-#             return render_template('index2.html', last_station = station_info['last'], next_station = station_info['next'], arrive1 = station_info['arrive1'], arrive2 = station_info['arrive2'],progress_value_platform = progress_value_platform, progress_value_inside = progress_value_inside)
 
 model = YOLO("yolov8m.pt")
 
