@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<link rel="shortcut icon" href="favicon.ico">
-
 <html>
-  <head>
-    <title>Video Streaming</title>
-  </head>
-  <body>
-    <h1>Video Streaming</h1>
-    <img src="{{ url_for('video') }}" width="640" height="480"/>
-  </body>
+<head>
+    <title>Kakao Map Example</title>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ebd1b2968d20e8f6165a79e9e14d5796"></script>
+</head>
+<body>
+    <div class="tabulation2 animate-box" id="map" style="width:60%; height:543px"></div>
+    <script>
+        var mapContainer = document.getElementById('map');
+        var mapOption = {
+            center: new kakao.maps.LatLng(37.5665, 126.9780), // 서울의 좌표
+            level: 3 // 지도의 확대 레벨
+        };
+        var map = new kakao.maps.Map(mapContainer, mapOption);
+    </script>
+</body>
 </html>
