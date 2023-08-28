@@ -317,15 +317,21 @@
 							
 							<div class="tabulation2 animate-box" id="map" style="width:60%; height:543px">
 							</div>
-							<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=key를입력해야"></script>
+							<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ebd1b2968d20e8f6165a79e9e14d5796"></script>
 							<script>
     							var mapContainer = document.getElementById('map');
+
+								var initialLat = 37.5665;
+								var initialLng = 126.9780;
+
     							var mapOption = {
-        							center: new kakao.maps.LatLng(37.5665, 126.9780), // 서울의 좌표
+        							center: new kakao.maps.LatLng(initialLat, initialLng), // 서울의 좌표
         							level: 3 // 지도의 확대 레벨
     							};
     							var map = new kakao.maps.Map(mapContainer, mapOption);
-							</script>							
+
+								
+							</script>
 						</div>
 					</div>
 				</div>
