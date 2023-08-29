@@ -1,17 +1,18 @@
-from flask import Flask, render_template, Response, redirect, request, session, jsonify
 import cv2
 import numpy as np
-from ultralytics import YOLO
 import pandas as pd
-from read_csv import draw_si_station_chart, draw_si_station_weekday_chart, draw_jong_station_chart, draw_jong_station_weekday_chart, draw_se_station_chart, draw_se_station_weekday_chart, draw_station_chart, draw_station_weekday_chart
+from flask import (Flask, Response, jsonify, redirect, render_template,
+                   request, session)
+from ultralytics import YOLO
 
+from read_csv import (draw_jong_station_chart, draw_jong_station_weekday_chart,
+                      draw_se_station_chart, draw_se_station_weekday_chart,
+                      draw_si_station_chart, draw_si_station_weekday_chart,
+                      draw_station_chart, draw_station_weekday_chart)
 
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
 cap = cv2.VideoCapture("video1.mp4")
-
-
-
 
 people_bbox = []  # 감지된 사람의 수를 저장할 리스트
 paused = False  # 동영상 일시 정지 여부를 저장하는 변수
@@ -41,8 +42,6 @@ next_station=None
 arrive1=None
 arrive2=None
 
-
-
 @app.route('/toggle_pause')
 def toggle_pause(): #특정 키를 누르면 last_people에 특정 키를 누른 시점의 값을 저장하도록 하자.
     global paused, last_people
@@ -50,7 +49,7 @@ def toggle_pause(): #특정 키를 누르면 last_people에 특정 키를 누른
     if paused:
         last_people = people_bbox[-1] if people_bbox else 0
         print("Last People:", last_people)
-    return "Paused" if paused else "Playing" 
+    return "Paused" if paused else "Playing"
 
 
 @app.route('/save_people_bbox', methods=['GET'])
@@ -93,14 +92,13 @@ def update_variable():
     selected_station = request.form.get('Station')
     
     if selected_station == '종각역':
-        video_path = "video1.mp4"
+        cap = cv2.VideoCapture("video1.mp4")
     elif selected_station == '시청역':
-        video_path = "video2.mp4"
+        cap = cv2.VideoCapture("video2.mp4")
     elif selected_station == '서울역':
-        video_path = "video3.mp4"
-    
-    new_cap = cv2.VideoCapture(video_path)
-    cap = new_cap
+        cap = cv2.VideoCapture("video3.mp4")
+    else:
+        cap = None
 
 
     for station_info in topics:
