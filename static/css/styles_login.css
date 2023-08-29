@@ -10867,7 +10867,7 @@ body {
   flex-shrink: 0;
   transition: transform 0.15s ease-in-out;
   z-index: 1038;
-  transform: translateX(-225px);
+  transform: translateX(-225px); /*여기 수정함*/
 }
 #layoutSidenav #layoutSidenav_content {
   position: relative;
@@ -10931,7 +10931,7 @@ body {
   margin-top:50px;
   /* sidebar menu margin-top*/
 }
-.sb-nav-fixed #layoutSidenav #layoutSidenav_content {
+.sb-nav-fixed #layoutSidenav #_content {
   padding-left: 225px;
   top: 56px;
 }
@@ -11242,4 +11242,17 @@ body {
   width: 20px !important;
   font-size: 0.75rem;
   border-radius: 0.375rem !important;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+}
+
+#btnNavbarSearch .fas {
+  font-size: 1.25rem; 
+}
+
+#searchInput {
+  margin-right: 10px; 
 }

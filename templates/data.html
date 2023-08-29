@@ -62,7 +62,7 @@
 			</div>
 		</header>
         <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
+            <!--<div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
@@ -130,19 +130,28 @@
                         Start Bootstrap
                     </div>
                 </nav>
-            </div>
+            </div>-->
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Dashboard
-                            <!--검색기능 추가함-->
-                            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                        <h1 class="mt-4" style="display: flex; justify-content: space-between; align-items: center;">
+                            <span>Dashboard</span>
+                            <form class="d-none d-md-inline-block form-inline">
                                 <div class="input-group">
                                     <input id="searchInput" class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" /> 
                                     <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
                                 </div>
                             </form>
                         </h1>
+                        
+                        <!--<h1 class="mt-4">Dashboard
+                            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                                <div class="input-group">
+                                    <input id="searchInput" class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" /> 
+                                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                                </div>
+                            </form>
+                        </h1>-->
                         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
                         <script>
@@ -189,7 +198,7 @@
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol>
-                        <div class="row">
+                        <!--<div class="row">
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-primary text-white mb-4">
                                     <div class="card-body">Primary Card</div>
@@ -226,7 +235,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                         <div class="row">
                             <div class="col-xl-6">
                                 <div class="card mb-4">
@@ -848,8 +857,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="static/js/scripts_login.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="static/assets/demo/chart-area-demo.js"></script>
-        <script src="static/assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="static/js/datatables-simple-demo.js"></script>
     </body>
