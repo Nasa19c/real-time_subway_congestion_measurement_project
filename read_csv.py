@@ -77,7 +77,7 @@ def draw_jong_station_weekday_chart(data):
     요일별_승차총승객수 = 종각_data.groupby('요일명')['승차총승객수'].sum().loc[요일별_이름_변경]
 
     # 요일별 막대 그래프 그리기
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(6, 3))
     요일별_승차총승객수.plot(kind='bar', color='skyblue')
     plt.xticks(rotation=0)
     plt.tight_layout()
