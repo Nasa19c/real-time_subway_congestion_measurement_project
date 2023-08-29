@@ -201,7 +201,7 @@ def si_station_daily_data():
 
 @app.route("/종각_station_daily_data")
 def jong_station_daily_data():
-    return render_template('종각_station_daily_data.html')    
+    return render_template('종각_station_daily_data.html')
     
 @app.route("/서울_station_daily_data")
 def se_station_daily_data():
