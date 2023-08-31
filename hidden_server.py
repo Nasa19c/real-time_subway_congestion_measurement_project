@@ -28,7 +28,7 @@ def login():
         
         if username in USERS and USERS[username] == password:
             session['username'] = username
-            return redirect(url_for('hidden_page'))
+            return redirect(url_for('index2_page'))
         else:
             return "Login failed."
 
