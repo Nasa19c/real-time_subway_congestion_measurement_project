@@ -127,11 +127,11 @@ def update_variable_1():
     selected_station = request.form.get('Station1')
 
     if selected_station == '종각역':
-        cap = cv2.VideoCapture("video1.mp4")
+        cap = cv2.VideoCapture("video4.mp4")
     elif selected_station == '시청역':
-        cap = cv2.VideoCapture("video2.mp4")
+        cap = cv2.VideoCapture("video5.mp4")
     elif selected_station == '서울역':
-        cap = cv2.VideoCapture("video3.mp4")
+        cap = cv2.VideoCapture("video6.mp4")
     else:
         cap = None
 
