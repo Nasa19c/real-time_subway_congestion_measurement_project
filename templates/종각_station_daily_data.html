@@ -84,7 +84,7 @@
                                         var searchValue = $('#searchInput').val();
                                 
                                         // 검색어가 '시청', '종각', '서울' 중 하나인 경우에만 리디렉션 처리
-                                        if (searchValue === '시청' || searchValue === '종각' || searchValue === '서울') {
+                                        if (searchValue === '시청' || searchValue === '종각' || searchValue === '서울'||searchValue === '시청역' || searchValue === '종각역' || searchValue === '서울역') {
                                             window.location.href = '/' + searchValue.toLowerCase() + '_station_daily_data';
                                         } else {
                                             // 검색어가 '시청', '종각', '서울' 중 하나가 아닌 경우 기본 동작 처리
@@ -103,9 +103,9 @@
                                         var searchValue = $(this).val();
                                         var graphIcons = defaultGraphIcons;
                                 
-                                        if (searchValue === '시청') {
+                                        if (searchValue === '시청'||searchValue === '시청역') {
                                             graphIcons = '<i class="fas fa-chart-area me-1"></i><i class="fas fa-chart-bar me-1"></i>';
-                                        } else if (searchValue === '종각' || searchValue === '서울') {
+                                        } else if (searchValue === '종각' || searchValue === '서울'||searchValue === '종각역' || searchValue === '서울역') {
                                             graphIcons = '<i class="fas fa-chart-bar me-1"></i>';
                                         }
                                 
