@@ -84,9 +84,13 @@
                                         var searchValue = $('#searchInput').val();
                                 
                                         // 검색어가 '시청', '종각', '서울' 중 하나인 경우에만 리디렉션 처리
-                                        if (searchValue === '시청' || searchValue === '종각' || searchValue === '서울'||searchValue === '시청역' || searchValue === '종각역' || searchValue === '서울역') {
+                                        if (searchValue === '시청' || searchValue === '종각' || searchValue === '서울'|| searchValue === '시청역' || searchValue === '종각역' || searchValue === '서울역') {
                                             window.location.href = '/' + searchValue.toLowerCase() + '_station_daily_data';
-                                        } else {
+                                        } 
+                                        else if(searchValue === '시청역' || searchValue === '종각역' || searchValue === '서울역') {
+                                        window.location.href = '/' + searchValue.slice(0,2).toLowerCase() + '_station_daily_data';
+                                        }
+                                        else {
                                             // 검색어가 '시청', '종각', '서울' 중 하나가 아닌 경우 기본 동작 처리
                                             window.location.href = '/data';
                                         }
